@@ -1,0 +1,10 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:v="clr-namespace:System;assembly=mscorlib">
+
+    <v:String x:Key="title">TourOrg Admin</v:String>
+    <v:String x:Key="login_hello">Hello into TourOrg Admin!</v:String>
+    <v:String x:Key="menu_language">Language</v:String>
+    <v:String x:Key="copyright">Eugene Maslov © 2023, Orsha, Belarus, v.1.0</v:String>
+
+</ResourceDictionary>

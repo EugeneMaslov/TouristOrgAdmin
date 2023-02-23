@@ -1,0 +1,54 @@
+﻿<UserControl x:Class="TouristOrgAdmin.Views.LoginControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TouristOrgAdmin.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="1.5*"></ColumnDefinition>
+            <ColumnDefinition Width="20"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="5*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.Background>
+            <LinearGradientBrush StartPoint="0, 0" EndPoint="1, 1">
+                <GradientStop Offset="0.3" Color="	#7FC7FF"></GradientStop>
+                <GradientStop Offset="0.6" Color="	#F8F4FF"></GradientStop>
+            </LinearGradientBrush>
+        </Grid.Background>
+
+        <Grid Grid.Column="1" Grid.Row="1">
+            <Grid.Background>
+                <LinearGradientBrush StartPoint="0, 0" EndPoint="1, 1">
+                    <GradientStop Offset="-0.2" Color="#2271B3"></GradientStop>
+                    <GradientStop Offset="1.2" Color="#252850"></GradientStop>
+                </LinearGradientBrush>
+            </Grid.Background>
+            <StackPanel Margin="10">
+                <TextBlock Style="{StaticResource LoginText}" Text="{DynamicResource login_hello}"></TextBlock>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Column="2" Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="3*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <Image Source="/Images/Icon.png"></Image>
+            </StackPanel>
+        </Grid>
+    </Grid>
+    
+</UserControl>
