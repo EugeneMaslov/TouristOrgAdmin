@@ -20,7 +20,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="20"/>
+            <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0" MouseDown="Grid_MouseDown">
@@ -79,13 +79,13 @@
         </Grid>
 
         <Grid Grid.Row="1">
-            <UserControl Content="{Binding ContentPath}"/>
+            <UserControl Content="{Binding ViewModel.ContentPath}"/>
         </Grid>
 
         <Grid Grid.Row="2" MouseDown="Grid_MouseDown_1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"></ColumnDefinition>
-                <ColumnDefinition Width="120"></ColumnDefinition>
+                <ColumnDefinition Width="130"></ColumnDefinition>
             </Grid.ColumnDefinitions>
                 <Grid.Background>
                 <LinearGradientBrush StartPoint="0, 0.5" EndPoint="1, 0.5">
@@ -101,7 +101,7 @@
             <Grid Grid.Column="1">
                 <StackPanel Orientation="Horizontal" MouseDown="StackPanel_MouseDown" >
                     <Image Source="/Images/free-icon-internet-149229.png" MaxHeight="15"></Image>
-                    <TextBlock Style="{StaticResource AddingText}" Text="{DynamicResource menu_language}"></TextBlock>
+                    <TextBlock Style="{StaticResource AddingText}" Text="{DynamicResource menu_language}" FontSize="15"></TextBlock>
                     <ComboBox Name="MainCombo" Visibility="Hidden"></ComboBox>
                 </StackPanel>
             </Grid>

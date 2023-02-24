@@ -10,13 +10,13 @@ namespace TouristOrgAdmin.Models
 {
     public class AdminAccount : INotifyPropertyChanged
     {
-        [Key]
         private string login;
         private string password;
         private bool isManager;
         private bool isAccountant;
         private static AdminAccount instanceAdmin;
 
+        [Key]
         public string Login
         {
             get => login;
@@ -64,7 +64,7 @@ namespace TouristOrgAdmin.Models
             }
         }
 
-        private AdminAccount() { }
+        public AdminAccount() { }
 
         private AdminAccount(string login, string password, bool isManager, bool isAccountant)
         {
@@ -74,7 +74,7 @@ namespace TouristOrgAdmin.Models
             IsAccountant = isAccountant;
         }
 
-        public AdminAccount GetInstance()
+        public static AdminAccount GetInstance()
         {
             if (instanceAdmin == null)
             {

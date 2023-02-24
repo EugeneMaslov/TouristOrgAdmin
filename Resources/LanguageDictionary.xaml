@@ -6,5 +6,13 @@
     <v:String x:Key="login_hello">Hello into TourOrg Admin!</v:String>
     <v:String x:Key="menu_language">Language</v:String>
     <v:String x:Key="copyright">Eugene Maslov © 2023, Orsha, Belarus, v.1.0</v:String>
+    <v:String x:Key="login_text">Enter your login: </v:String>
+    <v:String x:Key="password_text">Enter your password:</v:String>
+    <v:String x:Key="login_button">Log in</v:String>
+    <v:String x:Key="registration">Registration</v:String>
+    <v:String x:Key="login">Log In</v:String>
+    <v:String x:Key="register_text">Enter a new login:</v:String>
+    <v:String x:Key="password_text_register">Enter a new password:</v:String>
+    <v:String x:Key="register_button">Register</v:String>
 
 </ResourceDictionary>

@@ -16,6 +16,7 @@ using TouristOrgAdmin.ViewModels;
 using TouristOrgAdmin.Core;
 using TouristOrgAdmin.Views;
 using System.Globalization;
+using TouristOrgAdmin.Controllers;
 
 namespace TouristOrgAdmin
 {
@@ -25,8 +26,37 @@ namespace TouristOrgAdmin
     public partial class MainWindow : Window
     {
         public BaseViewModel ViewModel { get; set; }
-        public UserControl ContentPath { get; set; }
+
         private static MainWindow instance;
+        private TouristCompanyContext db = new TouristCompanyContext();
+
+        public TouristCompanyContext DB
+        {
+            get => db;
+            set
+            {
+                if (value != null)
+                {
+                    db = value;
+                }
+            }
+        }
+
+        public static TouristCompanyContext GetDB
+        {
+            get => GetInstance().DB;
+            set
+            {
+                GetInstance().DB = value;
+            }
+        }
+
+        public static void StaticNavigate(UserControl control, BaseViewModel viewModel)
+        {
+            GetInstance().ViewModel = viewModel;
+            GetInstance().ViewModel.ContentPath = control;
+        }
+
         private void MainWindowInit()
         {
             InitializeComponent();
@@ -42,8 +72,13 @@ namespace TouristOrgAdmin
                 menuLang.Click += ChangeLanguageClick;
                 MainCombo.Items.Add(menuLang);
             }
-            ViewModel = new AdminAccountViewModel();
-            ContentPath = LoginControl.GetInstance(ViewModel);
+            ViewModel = new TouristOrganizationViewModel();
+            if (db.AdminAccount.Count() != 0)
+            {
+                ViewModel.ContentPath = LoginControl.GetInstance(ViewModel);
+            }
+            else ViewModel.ContentPath = RegisterControl.GetInstance(ViewModel);
+            
             DataContext = this;
         }
 
@@ -90,7 +125,7 @@ namespace TouristOrgAdmin
         public void Navigate(UserControl control, BaseViewModel viewModel)
         {
             ViewModel = viewModel;
-            ContentPath = control;
+            ViewModel.ContentPath = control;
         }
 
         private void CloseButtonClick(object sender, RoutedEventArgs e)

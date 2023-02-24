@@ -6,5 +6,13 @@
     <v:String x:Key="login_hello">Вітаем у TourOrg Admin!</v:String>
     <v:String x:Key="menu_language">Змяніць мову</v:String>
     <v:String x:Key="copyright">Яўген Маслаў © 2023, Орша, Беларусь, v.1.0</v:String>
+    <v:String x:Key="login_text">Увядзіце свой лагін:</v:String>
+    <v:String x:Key="password_text">Увядзіце свой пароль:</v:String>
+    <v:String x:Key="login_button">Увайсці</v:String>
+    <v:String x:Key="registration">Рэгістрацыя</v:String>
+    <v:String x:Key="login">Уваход</v:String>
+    <v:String x:Key="register_text">Увядзіце новы лагін:</v:String>
+    <v:String x:Key="password_text_register">Увядзіце новы пароль:</v:String>
+    <v:String x:Key="register_button">Зарэгістравацца</v:String>
 
 </ResourceDictionary>
