@@ -14,5 +14,11 @@
     <v:String x:Key="register_text">Увядзіце новы лагін:</v:String>
     <v:String x:Key="password_text_register">Увядзіце новы пароль:</v:String>
     <v:String x:Key="register_button">Зарэгістравацца</v:String>
+    <v:String x:Key="login_notFound">Адміністратар з такім імем карыстальніка не знойдзены!</v:String>
+    <v:String x:Key="password_notCorrect">Няправільны пароль!</v:String>
+    <v:String x:Key="register_login_notCorrect">Новы лагін няверны!</v:String>
+    <v:String x:Key="register_error">Невядомая памылка пры рэгістрацыі!</v:String>
+    <v:String x:Key="is_manager_checkbox">Абавязкі мэнэджара па падборы персаналу</v:String>
+    <v:String x:Key="is_accountant_checkbox">Абавязкі бухгалтара</v:String>
 
 </ResourceDictionary>

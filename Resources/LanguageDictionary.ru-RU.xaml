@@ -14,5 +14,11 @@
     <v:String x:Key="register_text">Введите новый логин:</v:String>
     <v:String x:Key="password_text_register">Введите новый пароль:</v:String>
     <v:String x:Key="register_button">Зарегистрироваться</v:String>
+    <v:String x:Key="login_notFound">Администратор с таким именем пользователя не найден!</v:String>
+    <v:String x:Key="password_notCorrect">Неверный пароль!</v:String>
+    <v:String x:Key="register_login_notCorrect">Новый логин неверен!</v:String>
+    <v:String x:Key="register_error">Неизвестная ошибка при регистрации!</v:String>
+    <v:String x:Key="is_manager_checkbox">Обязанности менеджера по подбору персонала</v:String>
+    <v:String x:Key="is_accountant_checkbox">Обязанности бухгалтера</v:String>
 
 </ResourceDictionary>

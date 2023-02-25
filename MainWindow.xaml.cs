@@ -53,8 +53,7 @@ namespace TouristOrgAdmin
 
         public static void StaticNavigate(UserControl control, BaseViewModel viewModel)
         {
-            GetInstance().ViewModel = viewModel;
-            GetInstance().ViewModel.ContentPath = control;
+            GetInstance().Navigate(control, viewModel);
         }
 
         private void MainWindowInit()
@@ -104,6 +103,14 @@ namespace TouristOrgAdmin
                 CultureInfo ci = i.Tag as CultureInfo;
                 i.IsChecked = ci != null && ci.Equals(currLang);
             }
+
+            try
+            {
+                ((TouristOrganizationViewModel)ViewModel).ErrorText = "";
+            }
+            catch (Exception)
+            {
+            }
         }
 
         public MainWindow()
@@ -126,6 +133,13 @@ namespace TouristOrgAdmin
         {
             ViewModel = viewModel;
             ViewModel.ContentPath = control;
+            try
+            {
+                ((TouristOrganizationViewModel)ViewModel).ErrorText = "";
+            }
+            catch (Exception)
+            {
+            }
         }
 
         private void CloseButtonClick(object sender, RoutedEventArgs e)

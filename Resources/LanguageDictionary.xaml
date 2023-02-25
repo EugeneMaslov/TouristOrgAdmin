@@ -14,5 +14,11 @@
     <v:String x:Key="register_text">Enter a new login:</v:String>
     <v:String x:Key="password_text_register">Enter a new password:</v:String>
     <v:String x:Key="register_button">Register</v:String>
+    <v:String x:Key="login_notFound">No administrator with this username found!</v:String>
+    <v:String x:Key="password_notCorrect">Password is not correct!</v:String>
+    <v:String x:Key="register_login_notCorrect">New login is not correct!</v:String>
+    <v:String x:Key="register_error">Unknown registration error!</v:String>
+    <v:String x:Key="is_manager_checkbox">Act as a recruiting manager</v:String>
+    <v:String x:Key="is_accountant_checkbox">Act as an accountant</v:String>
 
 </ResourceDictionary>
