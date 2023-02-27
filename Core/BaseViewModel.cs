@@ -8,7 +8,7 @@ using TouristOrgAdmin.Models;
 
 namespace TouristOrgAdmin.Core
 {
-    public class BaseViewModel : INotifyPropertyChanged
+    public class BaseViewModel : PropertyObject, INotifyPropertyChanged
     {
         private UserControl contentPath;
 
@@ -24,8 +24,5 @@ namespace TouristOrgAdmin.Core
                 }
             }
         }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        public void OnPropertyChanged([CallerMemberName] string prop = "") => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
     }
 }

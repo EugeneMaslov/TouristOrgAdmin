@@ -24,12 +24,23 @@ namespace TouristOrgAdmin
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
-    {
-        public BaseViewModel ViewModel { get; set; }
-
+    { 
         private static MainWindow instance;
+        private static BaseViewModel viewModel;
         private TouristCompanyContext db = new TouristCompanyContext();
 
+        public BaseViewModel ViewModel 
+        {
+            get => viewModel;
+            set
+            {
+                if (value != null)
+                {
+                    viewModel = value;
+                    viewModel.OnPropertyChanged("ViewModel");
+                }
+            }
+        }
         public TouristCompanyContext DB
         {
             get => db;
@@ -133,8 +144,10 @@ namespace TouristOrgAdmin
         {
             ViewModel = viewModel;
             ViewModel.ContentPath = control;
+            usercontrol.Focus();
             try
             {
+                ((TouristOrganizationViewModel)ViewModel).TempString = "";
                 ((TouristOrganizationViewModel)ViewModel).ErrorText = "";
             }
             catch (Exception)
@@ -188,5 +201,6 @@ namespace TouristOrgAdmin
             }
             else MainCombo.IsDropDownOpen = false;
         }
+
     }
 }

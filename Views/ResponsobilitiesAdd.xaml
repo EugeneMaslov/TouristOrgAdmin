@@ -1,0 +1,38 @@
+﻿<UserControl x:Class="TouristOrgAdmin.Views.ResponsobilitiesAdd"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TouristOrgAdmin.Views" xmlns:viewmodels="clr-namespace:TouristOrgAdmin.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:TouristOrganizationViewModel}"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" KeyDown="UserControl_KeyDown">
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush StartPoint="0, 0" EndPoint="1, 1">
+                <GradientStop Offset="0.3" Color="	#7FC7FF"></GradientStop>
+                <GradientStop Offset="0.6" Color="	#F8F4FF"></GradientStop>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Grid Grid.Column="0" Grid.Row="1" Margin="50">
+            <Grid.Background>
+                <LinearGradientBrush StartPoint="0, 0" EndPoint="1, 1">
+                    <GradientStop Offset="-0.2" Color="#2271B3"></GradientStop>
+                    <GradientStop Offset="1.2" Color="#252850"></GradientStop>
+                </LinearGradientBrush>
+            </Grid.Background>
+            <StackPanel Margin="5" Orientation="Vertical" VerticalAlignment="Center">
+                <TextBlock Style="{StaticResource MainText}" Text="{DynamicResource acc_add_func}"></TextBlock>
+                <StackPanel Orientation="Horizontal" Margin="20, 0, 0, 0">
+                    <CheckBox Style="{StaticResource CircleCheckboxFL}" Width="20" Height="20" IsChecked="{Binding ViewModel.AdminAccount.IsManager, Mode=TwoWay}"></CheckBox>
+                    <TextBlock Style="{StaticResource LoginText}" Text="{DynamicResource is_manager_checkbox}"></TextBlock>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="20, 0, 0, 0">
+                    <CheckBox Style="{StaticResource CircleCheckboxFL}" Width="20" Height="20" IsChecked="{Binding ViewModel.AdminAccount.IsAccountant, Mode=TwoWay}"></CheckBox>
+                    <TextBlock Style="{StaticResource LoginText}" Text="{DynamicResource is_accountant_checkbox}"></TextBlock>
+                </StackPanel>
+                <Button x:Name="AcceptButton" Style="{StaticResource ModulesButton}" Content="{DynamicResource accept_text}" Command="{Binding ViewModel.ChangeAccountCommand}"/>
+                <Button x:Name="EndButton" Style="{StaticResource ModulesButton}" Content="{DynamicResource back_text}" Command="{Binding ViewModel.BackCommand}"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</UserControl>

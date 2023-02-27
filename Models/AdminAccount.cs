@@ -5,13 +5,14 @@ using System.ComponentModel.DataAnnotations;
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
 using System.Text;
+using TouristOrgAdmin.Core;
 
 namespace TouristOrgAdmin.Models
 {
-    public class AdminAccount : INotifyPropertyChanged
+    public class AdminAccount : PropertyObject, INotifyPropertyChanged
     {
         private string login;
-        private string password;
+        private string password = "";
         private bool isManager;
         private bool isAccountant;
         private static AdminAccount instanceAdmin;
@@ -84,6 +85,22 @@ namespace TouristOrgAdmin.Models
             return instanceAdmin;
         }
 
+        public static void RemoveInstance()
+        {
+            if (instanceAdmin != null)
+            {
+                instanceAdmin = null;
+            }
+        }
+
+        public static void SetInstance(AdminAccount adminAccount)
+        {
+            if (adminAccount != null)
+            {
+                instanceAdmin = adminAccount;
+            }
+        }
+
         public static AdminAccount GetInstance(string login, string password, bool isManager, bool isAccountant)
         {
             if (instanceAdmin == null)
@@ -119,8 +136,5 @@ namespace TouristOrgAdmin.Models
             }
             return false;
         }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        public void OnPropertyChanged([CallerMemberName] string prop = "") => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
     }
 }

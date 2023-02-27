@@ -20,5 +20,18 @@
     <v:String x:Key="register_error">Неизвестная ошибка при регистрации!</v:String>
     <v:String x:Key="is_manager_checkbox">Обязанности менеджера по подбору персонала</v:String>
     <v:String x:Key="is_accountant_checkbox">Обязанности бухгалтера</v:String>
+    <v:String x:Key="account_main_text">Аккаунт</v:String>
+    <v:String x:Key="modules_main_text">Модули</v:String>
+    <v:String x:Key="faq_main_text">Ответы на вопросы</v:String>
+    <v:String x:Key="login_info_text">Логин: </v:String>
+    <v:String x:Key="acc_login_change">Изменить логин</v:String>
+    <v:String x:Key="acc_password_change">Изменить пароль</v:String>
+    <v:String x:Key="acc_reset">Сброс аккаунта</v:String>
+    <v:String x:Key="acc_add_func">Добавить обязанности</v:String>
+    <v:String x:Key="acc_logout">Выйти</v:String>
+    <v:String x:Key="acc_reset_quest">Вы уверены, что хотите сбросить свой аккаунт?</v:String>
+    <v:String x:Key="accept_text">Подтвердить</v:String>
+    <v:String x:Key="back_text">Назад</v:String>
+    <v:String x:Key="password_text_old">Введите старый пароль:</v:String>
 
 </ResourceDictionary>

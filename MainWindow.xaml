@@ -66,8 +66,8 @@
                     </Button>
                     <Button x:Name="FullButton" Grid.Column="1" Style="{StaticResource MainButton}" Click="FullButton_Click">
                         <Button.Content>
-                            <Image Source="/Images/free-icon-font-rectangle-horizontal-3916918.png"></Image>    
-                       </Button.Content>
+                            <Image Source="/Images/free-icon-font-rectangle-horizontal-3916918.png"></Image>
+                        </Button.Content>
                     </Button>
                     <Button x:Name="CloseButton" Grid.Column="2" Style="{StaticResource MainButton}" Click="CloseButtonClick">
                         <Button.Content>
@@ -79,7 +79,7 @@
         </Grid>
 
         <Grid Grid.Row="1">
-            <UserControl Content="{Binding ViewModel.ContentPath}"/>
+            <UserControl x:Name="usercontrol" Content="{Binding ViewModel.ContentPath}" Grid.ColumnSpan="2"/>
         </Grid>
 
         <Grid Grid.Row="2" MouseDown="Grid_MouseDown_1">
@@ -87,14 +87,14 @@
                 <ColumnDefinition Width="*"></ColumnDefinition>
                 <ColumnDefinition Width="130"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-                <Grid.Background>
+            <Grid.Background>
                 <LinearGradientBrush StartPoint="0, 0.5" EndPoint="1, 0.5">
                     <GradientStop Color="#3E5F8A" Offset="0.0"></GradientStop>
                     <GradientStop Color="#0095B6" Offset="0.7"></GradientStop>
                 </LinearGradientBrush>
             </Grid.Background>
-            
-            
+
+
             <StackPanel Grid.Row="0" Orientation="Horizontal">
                 <TextBlock Style="{StaticResource AddingText}" Text="{DynamicResource copyright}"></TextBlock>
             </StackPanel>
@@ -106,6 +106,6 @@
                 </StackPanel>
             </Grid>
         </Grid>
-        
+
     </Grid>
 </Window>

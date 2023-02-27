@@ -20,5 +20,18 @@
     <v:String x:Key="register_error">Невядомая памылка пры рэгістрацыі!</v:String>
     <v:String x:Key="is_manager_checkbox">Абавязкі мэнэджара па падборы персаналу</v:String>
     <v:String x:Key="is_accountant_checkbox">Абавязкі бухгалтара</v:String>
+    <v:String x:Key="account_main_text">Акаўнт</v:String>
+    <v:String x:Key="modules_main_text">Модулі</v:String>
+    <v:String x:Key="faq_main_text">Адказы на пытанні</v:String>
+    <v:String x:Key="login_info_text">Лагін:</v:String>
+    <v:String x:Key="acc_login_change">Змяніць лагін</v:String>
+    <v:String x:Key="acc_password_change">Змяніць пароль</v:String>
+    <v:String x:Key="acc_reset">Скід акаўнта</v:String>
+    <v:String x:Key="acc_add_func">Дадаць абавязкі</v:String>
+    <v:String x:Key="acc_logout">Выйсці</v:String>
+    <v:String x:Key="acc_reset_quest">Вы ўпэўненыя, што жадаеце скінуць свой акаўнт?</v:String>
+    <v:String x:Key="accept_text">Пацвердзіць</v:String>
+    <v:String x:Key="back_text">Назад</v:String>
+    <v:String x:Key="password_text_old">Увядзіце стары пароль:</v:String>
 
 </ResourceDictionary>

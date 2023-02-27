@@ -3,9 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:TouristOrgAdmin.Views" xmlns:models="clr-namespace:TouristOrgAdmin.Models" d:DataContext="{d:DesignInstance Type=models:AdminAccount}"
+             xmlns:local="clr-namespace:TouristOrgAdmin.Views" 
+             xmlns:models="clr-namespace:TouristOrgAdmin.Models" d:DataContext="{d:DesignInstance Type=models:AdminAccount}"
+             xmlns:w="clr-namespace:TouristOrgAdmin.Core"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="800" KeyDown="UserControl_KeyDown">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20"></ColumnDefinition>
@@ -37,7 +39,7 @@
                 <TextBlock Style="{StaticResource LoginText}" Text="{DynamicResource login_text}" HorizontalAlignment="Left"></TextBlock>
                 <TextBox Text="{Binding ViewModel.AdminAccount.Login, Mode=TwoWay}" Style="{DynamicResource LoginTextBox}"/>
                 <TextBlock Style="{StaticResource LoginText}" Text="{DynamicResource password_text}" HorizontalAlignment="Left"></TextBlock>
-                <TextBox Text="{Binding ViewModel.AdminAccount.Password, Mode=OneWayToSource}" Style="{StaticResource LoginTextBox}"/>
+                <PasswordBox Style="{StaticResource PasswordTextBox}" w:PasswordHelper.Attach="True" w:PasswordHelper.Password="{Binding ViewModel.TempString, Mode=TwoWay}"></PasswordBox>
                 <Button x:Name="LogInButton" Style="{StaticResource LoginButton}" Content="{DynamicResource login_button}" Command="{Binding ViewModel.LoginCommand}"/>
             </StackPanel>
             <TextBlock Text="{Binding ViewModel.ErrorText}" Style="{StaticResource LoginText}" VerticalAlignment="Bottom"></TextBlock>

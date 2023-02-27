@@ -14,17 +14,34 @@ namespace TouristOrgAdmin.ViewModels
 {
     public class TouristOrganizationViewModel : BaseViewModel
     {
-
-        public AdminAccount AdminAccount { get; set; }
-        public RelayCommand LoginCommand { protected set; get; }
-        public RelayCommand RegisterCommand { protected set; get; }
-
         private bool isErrorOnLogin;
         private bool isErrorPassword;
         private bool isErrorOnRegister;
         private bool isUnknownError;
         private string errorText = "";
+        private AdminAccount adminAccount;
 
+        public AdminAccount TempAdminAccount { get; set; }
+        public RelayCommand LoginCommand { protected set; get; }
+        public RelayCommand RegisterCommand { protected set; get; }
+        public RelayCommand LogOutCommand { protected set; get; }
+        public RelayCommand ResetAccountCommand { protected set; get; }
+        public RelayCommand BackCommand { protected set; get; }
+        public RelayCommand ChangeResponsobilitesCommand { protected set; get; }
+        public RelayCommand ChangePasswordCommand { protected set; get; }
+        public RelayCommand ChangeAccountCommand { protected set; get; }
+        public RelayCommand ChangePasswordEndCommand { protected set; get; }
+        public string TempString { get; set; }
+
+        public AdminAccount AdminAccount
+        {
+            get => adminAccount;
+            set
+            {
+                adminAccount = value;
+                OnPropertyChanged("AdminAccount");
+            }
+        }
         public bool IsErrorOnLogin
         {
             get => isErrorOnLogin;
@@ -79,18 +96,29 @@ namespace TouristOrgAdmin.ViewModels
         {
             LoginCommand = new RelayCommand(_ => DoLogin());
             RegisterCommand = new RelayCommand(_ => DoRegister());
+            LogOutCommand = new RelayCommand(_ => LogOut());
+            ResetAccountCommand = new RelayCommand(_ => ResetAccount());
+            BackCommand = new RelayCommand(_ => Back());
+            ChangeAccountCommand = new RelayCommand(_ => ChangeAccount());
+            ChangeResponsobilitesCommand = new RelayCommand(_ => ChangeResponsobilities());
+            ChangePasswordCommand = new RelayCommand(_ => ChangePassword());
+            ChangePasswordEndCommand = new RelayCommand(_ => ChangePasswordEnd());
             AdminAccount = AdminAccount.GetInstance();
+            TempAdminAccount = new AdminAccount();
         }
 
         private void DoLogin()
         {
             
-            AdminAccount admin = MainWindow.GetDB.AdminAccount.FirstOrDefault(c => c.Login == AdminAccount.Login);
+            AdminAccount admin = MainWindow.GetDB.AdminAccount.SingleOrDefault(c => c.Login == AdminAccount.Login);
             if (admin != null)
             {
-                if (admin.Password == AdminAccount.Password)
+                if (admin.IsSame(TempString))
                 {
-                    //MainWindow.StaticNavigate(, this);
+                    AdminAccount.RemoveInstance();
+                    AdminAccount.SetInstance(admin);
+                    AdminAccount = AdminAccount.GetInstance();
+                    MainWindow.StaticNavigate(AdminPanel.GetInstance(this), this);
                 }
                 else
                 {
@@ -111,9 +139,9 @@ namespace TouristOrgAdmin.ViewModels
                 {
                     if (AdminAccount.Password != "" && AdminAccount.Password != null)
                     {
-                        MainWindow.GetDB.Add(AdminAccount);
+                        MainWindow.GetDB.AdminAccount.Add(AdminAccount);
                         MainWindow.GetDB.SaveChanges();
-                        MainWindow.StaticNavigate(LoginControl.GetInstance(this), this);
+                        MainWindow.StaticNavigate(AdminPanel.GetInstance(this), this);
                     }
                     else
                     {
@@ -129,6 +157,76 @@ namespace TouristOrgAdmin.ViewModels
             {
                 IsUnknownError = true;
             }
+        }
+
+        private void LogOut()
+        {
+            if (AdminAccount != null)
+            {
+                MainWindow.StaticNavigate(LoginControl.GetInstance(this), this);
+            }
+        }
+
+        private void ChangePassword()
+        {
+            MainWindow.StaticNavigate(ChangePasswordControl.GetInstance(this), this);
+        }
+
+        private void ChangePasswordEnd()
+        {
+            if (TempAdminAccount != null)
+            {
+                AdminAccount etalon = MainWindow.GetDB.AdminAccount.SingleOrDefault(c => c.Login == AdminAccount.Login);
+                if (etalon != null)
+                {
+                    if (etalon.Password == TempAdminAccount.Password)
+                    {
+                        AdminAccount.Password = TempString;
+                        ChangeAccount();
+                    }
+                    else
+                    {
+                        IsErrorPassword = true;
+                    }
+                }
+                else
+                {
+                    IsErrorOnLogin = true;
+                }
+            }
+        }
+
+        private void ResetAccount()
+        {
+            if (AdminAccount != null)
+            {
+                if (MessageBox.Show((string)Application.Current.Resources["acc_reset_quest"], (string)Application.Current.Resources["acc_reset"], MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                {
+                    MainWindow.GetDB.AdminAccount.Remove(AdminAccount);
+                    MainWindow.GetDB.SaveChanges();
+                    MainWindow.StaticNavigate(RegisterControl.GetInstance(this), this);
+                }
+            }
+        }
+
+        private void ChangeResponsobilities()
+        {
+            MainWindow.StaticNavigate(ResponsobilitiesAdd.GetInstance(this), this);
+        }
+
+        private void Back()
+        {
+            MainWindow.StaticNavigate(AdminPanel.GetInstance(this), this);
+        }
+
+        private void ChangeAccount()
+        {
+            if (AdminAccount != null)
+            {
+                MainWindow.GetDB.AdminAccount.Update(AdminAccount);
+                MainWindow.GetDB.SaveChanges();
+            }
+            Back();
         }
     }
 }

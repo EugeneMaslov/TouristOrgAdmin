@@ -9,6 +9,7 @@ namespace TouristOrgAdmin.Controllers
     public class TouristCompanyContext : DbContext
     {
         public DbSet<AdminAccount> AdminAccount { get; set; } = null!;
+        public DbSet<Communications> Communications { get; set; } = null!;
 
         public TouristCompanyContext()
         {

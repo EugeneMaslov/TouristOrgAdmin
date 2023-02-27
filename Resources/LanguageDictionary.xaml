@@ -20,5 +20,18 @@
     <v:String x:Key="register_error">Unknown registration error!</v:String>
     <v:String x:Key="is_manager_checkbox">Act as a recruiting manager</v:String>
     <v:String x:Key="is_accountant_checkbox">Act as an accountant</v:String>
+    <v:String x:Key="account_main_text">Account</v:String>
+    <v:String x:Key="modules_main_text">Modules</v:String>
+    <v:String x:Key="faq_main_text">FAQ</v:String>
+    <v:String x:Key="login_info_text">Login:</v:String>
+    <v:String x:Key="acc_login_change">Change login</v:String>
+    <v:String x:Key="acc_password_change">Change password</v:String>
+    <v:String x:Key="acc_reset">Account reset</v:String>
+    <v:String x:Key="acc_add_func">Add responsibilities</v:String>
+    <v:String x:Key="acc_logout">Logout</v:String>
+    <v:String x:Key="acc_reset_quest">Are you sure you want to reset your account?</v:String>
+    <v:String x:Key="accept_text">Accept</v:String>
+    <v:String x:Key="back_text">Back</v:String>
+    <v:String x:Key="password_text_old">Enter a old password:</v:String>
 
 </ResourceDictionary>

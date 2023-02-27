@@ -11,6 +11,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TouristOrgAdmin.Core;
+using TouristOrgAdmin.ViewModels;
 
 namespace TouristOrgAdmin.Views
 {
@@ -35,6 +36,20 @@ namespace TouristOrgAdmin.Views
                 instance = new RegisterControl(viewModel);
             }
             return instance;
+        }
+
+        private void UserControl_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                try
+                {
+                    (ViewModel as TouristOrganizationViewModel).RegisterCommand.Execute(sender);
+                }
+                catch (Exception)
+                {
+                }
+            }
         }
     }
 }

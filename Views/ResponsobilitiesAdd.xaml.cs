@@ -10,31 +10,32 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using TouristOrgAdmin.ViewModels;
 using TouristOrgAdmin.Core;
+using TouristOrgAdmin.ViewModels;
 
 namespace TouristOrgAdmin.Views
 {
     /// <summary>
-    /// Логика взаимодействия для LoginControl.xaml
+    /// Логика взаимодействия для ResponsobilitiesAdd.xaml
     /// </summary>
-    public partial class LoginControl : UserControl
+    public partial class ResponsobilitiesAdd : UserControl
     {
         public BaseViewModel ViewModel { get; private set; }
-        private static LoginControl instance;
-        private LoginControl(BaseViewModel viewModel)
+        private static ResponsobilitiesAdd instance;
+        public ResponsobilitiesAdd(BaseViewModel viewModel)
         {
             InitializeComponent();
             ViewModel = viewModel;
             DataContext = this;
         }
 
-        public static LoginControl GetInstance(BaseViewModel viewModel)
+        public static ResponsobilitiesAdd GetInstance(BaseViewModel viewModel)
         {
             if (instance == null)
             {
-                instance = new LoginControl(viewModel);
+                instance = new ResponsobilitiesAdd(viewModel);
             }
+            instance.EndButton.Focus();
             return instance;
         }
 
@@ -44,7 +45,17 @@ namespace TouristOrgAdmin.Views
             {
                 try
                 {
-                    (ViewModel as TouristOrganizationViewModel).LoginCommand.Execute(sender);
+                    (ViewModel as TouristOrganizationViewModel).ChangeAccountCommand.Execute(sender);
+                }
+                catch (Exception)
+                {
+                }
+            }
+            else if (e.Key == Key.Escape)
+            {
+                try
+                {
+                    (ViewModel as TouristOrganizationViewModel).BackCommand.Execute(sender);
                 }
                 catch (Exception)
                 {

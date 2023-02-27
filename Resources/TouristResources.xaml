@@ -69,6 +69,38 @@
         </Setter>
     </Style>
 
+    <Style x:Key="ModulesButton" TargetType="Button">
+        <Setter Property="Background" Value="#003366" />
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="Margin" Value="5" />
+        <Setter Property="FontSize" Value="15"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="Border"
+                            CornerRadius="15"
+                            BorderThickness="0"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            Padding="5">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" Name="content"></ContentPresenter>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="White"></Setter>
+                            <Setter Property="Foreground" Value="#003366"></Setter>
+                        </Trigger>
+                        <Trigger Property="IsMouseCaptured" Value="True">
+                            <Setter Property="Background" Value="#2271B3"></Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
     <Style x:Key="MainText" TargetType="TextBlock">
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="Foreground" Value="#80DAEB"/>
@@ -255,6 +287,41 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TextBox}">
+                    <Border x:Name="border"
+                            CornerRadius="2"
+                            BorderBrush="#6495ED"
+                            BorderThickness="1"
+                            Background="#A2ADD0">
+                        <ScrollViewer x:Name="PART_ContentHost"
+                                        Focusable="false"
+                                        HorizontalScrollBarVisibility="Hidden"
+                                        VerticalScrollBarVisibility="Hidden"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter Property="BorderBrush" TargetName="border" Value="Black"/>
+                            <Setter Property="Foreground" Value="#FAF0E6"/>
+                        </Trigger>
+                        <Trigger Property="IsFocused" Value="true">
+                            <Setter Property="Foreground" Value="#F8F4FF" />
+                            <Setter Property="BorderBrush" TargetName="border" Value="#3D2B1F"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="PasswordTextBox" TargetType="PasswordBox">
+        <Setter Property="Padding" Value="5"/>
+        <Setter Property="Margin" Value="5"/>
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="MinHeight" Value="20"/>
+        <Setter Property="MinWidth" Value="250"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type PasswordBox}">
                     <Border x:Name="border"
                             CornerRadius="2"
                             BorderBrush="#6495ED"
