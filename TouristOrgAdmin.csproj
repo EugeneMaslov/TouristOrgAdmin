@@ -15,11 +15,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Images\accountant-icon.png" />
+    <None Remove="Images\com-icon.png" />
     <None Remove="Images\free-icon-font-cross-small-3917243.png" />
     <None Remove="Images\free-icon-font-minus-3917141.png" />
     <None Remove="Images\free-icon-font-rectangle-horizontal-3916918.png" />
     <None Remove="Images\free-icon-internet-149229.png" />
     <None Remove="Images\Icon.png" />
+    <None Remove="Images\manager-icon.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -31,6 +34,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="Images\accountant-icon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\com-icon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Images\free-icon-font-cross-small-3917243.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -44,6 +53,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\Icon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\manager-icon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

@@ -33,5 +33,8 @@
     <v:String x:Key="accept_text">Подтвердить</v:String>
     <v:String x:Key="back_text">Назад</v:String>
     <v:String x:Key="password_text_old">Введите старый пароль:</v:String>
+    <v:String x:Key="module_main">Связи организации</v:String>
+    <v:String x:Key="module_manager">Модуль менеджера</v:String>
+    <v:String x:Key="module_accountant">Учетный модуль</v:String>
 
 </ResourceDictionary>

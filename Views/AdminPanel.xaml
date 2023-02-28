@@ -51,8 +51,19 @@
             </Grid.Background>
             <StackPanel Margin="10" Orientation="Vertical" VerticalAlignment="Top">
                 <TextBlock Style="{StaticResource MainText}" Text="{DynamicResource modules_main_text}"></TextBlock>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Image Source="/Images/com-icon.png" MaxWidth="60"></Image>
+                    <Button Style="{StaticResource ModulesButton}" Content="{DynamicResource module_main}" MinWidth="160" Command="{Binding ViewModel.OrganizationLinkCommand}"></Button>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Visibility="{Binding ViewModel.AdminAccount.IsManagerV}">
+                    <Image Source="/Images/manager-icon.png" MaxWidth="60"></Image>
+                    <Button Style="{StaticResource ModulesButton}" Content="{DynamicResource module_manager}" IsEnabled="{Binding ViewModel.AdminAccount.IsManager}" MinWidth="160"></Button>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Visibility="{Binding ViewModel.AdminAccount.IsAccountantV}">
+                    <Image Source="/Images/accountant-icon.png" MaxWidth="60"></Image>
+                    <Button Style="{StaticResource ModulesButton}" Content="{DynamicResource module_accountant}" IsEnabled="{Binding ViewModel.AdminAccount.IsAccountant}" MinWidth="160"></Button>
+                </StackPanel>
             </StackPanel>
-            <TextBlock Text="{Binding ViewModel.ErrorText}" Style="{StaticResource LoginText}" VerticalAlignment="Bottom"></TextBlock>
         </Grid>
         <Grid Grid.Column="2" Grid.Row="1" Margin="10">
             <Grid.Background>
@@ -64,7 +75,7 @@
             <StackPanel Margin="10" Orientation="Vertical" VerticalAlignment="Top">
                 <TextBlock Style="{StaticResource MainText}" Text="{DynamicResource faq_main_text}"></TextBlock>
             </StackPanel>
-            <TextBlock Text="{Binding ViewModel.ErrorText}" Style="{StaticResource LoginText}" VerticalAlignment="Bottom"></TextBlock>
+
         </Grid>
     </Grid>
 </UserControl>

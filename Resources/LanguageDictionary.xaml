@@ -33,5 +33,8 @@
     <v:String x:Key="accept_text">Accept</v:String>
     <v:String x:Key="back_text">Back</v:String>
     <v:String x:Key="password_text_old">Enter a old password:</v:String>
+    <v:String x:Key="module_main">Organization links</v:String>
+    <v:String x:Key="module_manager">Manager module</v:String>
+    <v:String x:Key="module_accountant">Accounting module</v:String>
 
 </ResourceDictionary>

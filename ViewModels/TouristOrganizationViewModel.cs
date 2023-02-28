@@ -31,6 +31,7 @@ namespace TouristOrgAdmin.ViewModels
         public RelayCommand ChangePasswordCommand { protected set; get; }
         public RelayCommand ChangeAccountCommand { protected set; get; }
         public RelayCommand ChangePasswordEndCommand { protected set; get; }
+        public RelayCommand OrganizationLinkCommand { protected set; get; }
         public string TempString { get; set; }
 
         public AdminAccount AdminAccount
@@ -103,6 +104,7 @@ namespace TouristOrgAdmin.ViewModels
             ChangeResponsobilitesCommand = new RelayCommand(_ => ChangeResponsobilities());
             ChangePasswordCommand = new RelayCommand(_ => ChangePassword());
             ChangePasswordEndCommand = new RelayCommand(_ => ChangePasswordEnd());
+            OrganizationLinkCommand = new RelayCommand(_ => GoOrganizationLink());
             AdminAccount = AdminAccount.GetInstance();
             TempAdminAccount = new AdminAccount();
         }
@@ -227,6 +229,11 @@ namespace TouristOrgAdmin.ViewModels
                 MainWindow.GetDB.SaveChanges();
             }
             Back();
+        }
+
+        private void GoOrganizationLink()
+        {
+            MainWindow.StaticNavigate(OrganizationLinksControl.GetInstance(this), this);
         }
     }
 }

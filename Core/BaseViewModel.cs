@@ -11,6 +11,7 @@ namespace TouristOrgAdmin.Core
     public class BaseViewModel : PropertyObject, INotifyPropertyChanged
     {
         private UserControl contentPath;
+        private UserControl subContentPath;
 
         public UserControl ContentPath
         {
@@ -21,6 +22,19 @@ namespace TouristOrgAdmin.Core
                 {
                     contentPath = value;
                     OnPropertyChanged("ContentPath");
+                }
+            }
+        }
+
+        public UserControl SubContentPath
+        {
+            get => subContentPath;
+            set
+            {
+                if (value != null)
+                {
+                    subContentPath = value;
+                    OnPropertyChanged("SubContentPath");
                 }
             }
         }

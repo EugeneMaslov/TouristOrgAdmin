@@ -6,6 +6,7 @@ using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
 using System.Text;
 using TouristOrgAdmin.Core;
+using System.Windows;
 
 namespace TouristOrgAdmin.Models
 {
@@ -50,6 +51,7 @@ namespace TouristOrgAdmin.Models
             {
                 isManager = value;
                 OnPropertyChanged("IsManager");
+                OnPropertyChanged("IsManagerV");
             }
         }
         public bool IsAccountant
@@ -62,6 +64,31 @@ namespace TouristOrgAdmin.Models
             {
                 isAccountant = value;
                 OnPropertyChanged("IsAccountant");
+                OnPropertyChanged("IsAccountantV");
+            }
+        }
+
+        public Visibility IsManagerV
+        {
+            get
+            {
+                if (isManager)
+                {
+                    return Visibility.Visible;
+                }
+                else return Visibility.Collapsed;
+            }
+        }
+
+        public Visibility IsAccountantV
+        {
+            get
+            {
+                if (isAccountant)
+                {
+                    return Visibility.Visible;
+                }
+                else return Visibility.Collapsed;
             }
         }
 
