@@ -18,7 +18,7 @@ namespace TouristOrgAdmin.Views
     /// <summary>
     /// Логика взаимодействия для ChangePassword.xaml
     /// </summary>
-    public partial class ChangePasswordControl : UserControl
+    public partial class ChangePasswordControl : UserControl, ILanguages
     {
         public BaseViewModel ViewModel { get; private set; }
        
@@ -60,6 +60,11 @@ namespace TouristOrgAdmin.Views
                 {
                 }
             }
+        }
+
+        public void LanguageChanged()
+        {
+            //none
         }
     }
 }

@@ -27,8 +27,6 @@ namespace TouristOrgAdmin
     { 
         private static MainWindow instance;
         private static BaseViewModel viewModel;
-        private TouristCompanyContext db = new TouristCompanyContext();
-
         public BaseViewModel ViewModel 
         {
             get => viewModel;
@@ -41,27 +39,6 @@ namespace TouristOrgAdmin
                 }
             }
         }
-        public TouristCompanyContext DB
-        {
-            get => db;
-            set
-            {
-                if (value != null)
-                {
-                    db = value;
-                }
-            }
-        }
-
-        public static TouristCompanyContext GetDB
-        {
-            get => GetInstance().DB;
-            set
-            {
-                GetInstance().DB = value;
-            }
-        }
-
         public static void StaticNavigate(UserControl control, BaseViewModel viewModel)
         {
             GetInstance().Navigate(control, viewModel);
@@ -83,12 +60,17 @@ namespace TouristOrgAdmin
                 MainCombo.Items.Add(menuLang);
             }
             ViewModel = new TouristOrganizationViewModel();
-            if (db.AdminAccount.Count() != 0)
+            try
             {
-                ViewModel.ContentPath = LoginControl.GetInstance(ViewModel);
+                if ((ViewModel as TouristOrganizationViewModel).DB.AdminAccount.Count() != 0)
+                {
+                    ViewModel.ContentPath = LoginControl.GetInstance(ViewModel);
+                }
+                else ViewModel.ContentPath = RegisterControl.GetInstance(ViewModel);
             }
-            else ViewModel.ContentPath = RegisterControl.GetInstance(ViewModel);
-            
+            catch (Exception)
+            {
+            }  
             DataContext = this;
         }
 
@@ -118,6 +100,7 @@ namespace TouristOrgAdmin
             try
             {
                 ((TouristOrganizationViewModel)ViewModel).ErrorText = "";
+                ((ILanguages)ViewModel).LanguageChanged();
             }
             catch (Exception)
             {

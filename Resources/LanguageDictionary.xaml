@@ -36,5 +36,18 @@
     <v:String x:Key="module_main">Organization links</v:String>
     <v:String x:Key="module_manager">Manager module</v:String>
     <v:String x:Key="module_accountant">Accounting module</v:String>
+    <v:String x:Key="add_relation">Add relation</v:String>
+    <v:String x:Key="update_relation">Change relation</v:String>
+    <v:String x:Key="remove_relation">Remove relation</v:String>
+    <v:String x:Key="relation_true">contract is valid</v:String>
+    <v:String x:Key="relation_false">contract expired</v:String>
+    <v:String x:Key="relation_far">soon the end of the contract</v:String>
+    <v:String x:Key="cancel_text">Cancel</v:String>
+    <v:String x:Key="unp_text">UNP:</v:String>
+    <v:String x:Key="name_com_text">Name:</v:String>
+    <v:String x:Key="date_start_text">Start date:</v:String>
+    <v:String x:Key="date_end_text">End date:</v:String>
+    <v:String x:Key="load_document_text">Load document...</v:String>
+    <v:String x:Key="communication_notCorrect">Communication settings not correct</v:String>
 
 </ResourceDictionary>

@@ -18,7 +18,7 @@ namespace TouristOrgAdmin.Views
     /// <summary>
     /// Логика взаимодействия для RegisterControl.xaml
     /// </summary>
-    public partial class RegisterControl : UserControl
+    public partial class RegisterControl : UserControl, ILanguages
     {
         public BaseViewModel ViewModel { get; private set; }
         private static RegisterControl instance;
@@ -50,6 +50,11 @@ namespace TouristOrgAdmin.Views
                 {
                 }
             }
+        }
+
+        public void LanguageChanged()
+        {
+            //none
         }
     }
 }

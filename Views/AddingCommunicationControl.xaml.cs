@@ -15,24 +15,24 @@ using TouristOrgAdmin.Core;
 namespace TouristOrgAdmin.Views
 {
     /// <summary>
-    /// Логика взаимодействия для AdminPanel.xaml
+    /// Логика взаимодействия для AddingCommunicationControl.xaml
     /// </summary>
-    public partial class AdminPanel : UserControl, ILanguages
+    public partial class AddingCommunicationControl : UserControl, ILanguages
     {
         public BaseViewModel ViewModel { get; private set; }
-        private static AdminPanel instance;
-        private AdminPanel(BaseViewModel viewModel)
+        private static AddingCommunicationControl instance;
+        public AddingCommunicationControl(BaseViewModel viewModel)
         {
             InitializeComponent();
             ViewModel = viewModel;
             DataContext = this;
         }
 
-        public static AdminPanel GetInstance(BaseViewModel viewModel)
+        public static AddingCommunicationControl GetInstance(BaseViewModel viewModel)
         {
             if (instance == null)
             {
-                instance = new AdminPanel(viewModel);
+                instance = new AddingCommunicationControl(viewModel);
             }
             return instance;
         }

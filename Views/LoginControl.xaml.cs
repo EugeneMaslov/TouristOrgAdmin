@@ -18,7 +18,7 @@ namespace TouristOrgAdmin.Views
     /// <summary>
     /// Логика взаимодействия для LoginControl.xaml
     /// </summary>
-    public partial class LoginControl : UserControl
+    public partial class LoginControl : UserControl, ILanguages
     {
         public BaseViewModel ViewModel { get; private set; }
         private static LoginControl instance;
@@ -50,6 +50,11 @@ namespace TouristOrgAdmin.Views
                 {
                 }
             }
+        }
+
+        public void LanguageChanged()
+        {
+            //none
         }
     }
 }

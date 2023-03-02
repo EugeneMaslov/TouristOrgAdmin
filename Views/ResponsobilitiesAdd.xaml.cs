@@ -18,7 +18,7 @@ namespace TouristOrgAdmin.Views
     /// <summary>
     /// Логика взаимодействия для ResponsobilitiesAdd.xaml
     /// </summary>
-    public partial class ResponsobilitiesAdd : UserControl
+    public partial class ResponsobilitiesAdd : UserControl, ILanguages
     {
         public BaseViewModel ViewModel { get; private set; }
         private static ResponsobilitiesAdd instance;
@@ -61,6 +61,11 @@ namespace TouristOrgAdmin.Views
                 {
                 }
             }
+        }
+
+        public void LanguageChanged()
+        {
+            //none
         }
     }
 }

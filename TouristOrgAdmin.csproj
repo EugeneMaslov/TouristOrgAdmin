@@ -20,7 +20,10 @@
     <None Remove="Images\free-icon-font-cross-small-3917243.png" />
     <None Remove="Images\free-icon-font-minus-3917141.png" />
     <None Remove="Images\free-icon-font-rectangle-horizontal-3916918.png" />
+    <None Remove="Images\free-icon-font-search-3917026.png" />
     <None Remove="Images\free-icon-internet-149229.png" />
+    <None Remove="Images\free-icon-search-interface-symbol-54481.png" />
+    <None Remove="Images\free-icon-searching-3795241.png" />
     <None Remove="Images\Icon.png" />
     <None Remove="Images\manager-icon.png" />
   </ItemGroup>
@@ -50,6 +53,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\free-icon-internet-149229.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\free-icon-searching-3795241.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\Icon.png">

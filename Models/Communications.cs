@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
+using System.Windows;
 using TouristOrgAdmin.Core;
 
 namespace TouristOrgAdmin.Models
 {
-    public class Communications : PropertyObject
+    public class Communications : PropertyObject, ICloneable
     {
         private string fUNP;
         private string name;
@@ -21,10 +22,18 @@ namespace TouristOrgAdmin.Models
             get => fUNP;
             set
             {
-                if (value.Length == 9)
+                if (value != null && value.Length == 9)
                 {
-                    fUNP = value;
-                    OnPropertyChanged("UNP");
+                    try
+                    {
+                        long.Parse(value);
+                        fUNP = value;
+                        OnPropertyChanged("UNP");
+                        OnPropertyChanged("NameUNPString");
+                    }
+                    catch (Exception)
+                    {
+                    }
                 }
             }
         }
@@ -34,10 +43,11 @@ namespace TouristOrgAdmin.Models
             get => name;
             set
             {
-                if (value.Length <= 120 && value != null && value != "")
+                if (value != null && value.Length <= 120 && value != "")
                 {
                     name = value;
                     OnPropertyChanged("Name");
+                    OnPropertyChanged("NameUNPString");
                 }
             }
         }
@@ -49,15 +59,7 @@ namespace TouristOrgAdmin.Models
             {
                 if (value != null)
                 {
-                    if (dateEnd == null)
-                    {
-                        dateStart = value;
-                        DateEnd = value.AddYears(3);
-                    }
-                    else
-                    {
-                        dateStart = value <= dateEnd ? value : dateEnd.AddDays(-1);
-                    }
+                    dateStart = value;
                     OnPropertyChanged("DateStart");
                 }
             }
@@ -70,21 +72,13 @@ namespace TouristOrgAdmin.Models
             {
                 if (value != null)
                 {
-                    if (dateStart == null)
-                    {
-                        dateEnd = value;
-                        DateStart = value.AddYears(3);
-                    }
-                    else
-                    {
-                        dateEnd = value >= dateStart ? value : dateStart.AddDays(1);
-                    }
+                    dateEnd = value;
                     OnPropertyChanged("DateEnd");
                 }
             }
         }
 
-        public string DocName
+        public string DocPathName
         {
             get => docName;
             set
@@ -92,29 +86,57 @@ namespace TouristOrgAdmin.Models
                 if (value.Length <= 200)
                 {
                     docName = value;
-                    OnPropertyChanged("DocName");
+                    OnPropertyChanged("DocPathName");
                 }
             }
         }
 
-        public string DocPath
+        public string FullDocPath
         {
             get => docPath;
             set
             {
                 docPath = value;
-                OnPropertyChanged("DocPath");
+                OnPropertyChanged("FullDocPath");
             }
         }
 
-        public override bool Equals(object obj)
+        public string NameUNPString => ToString();
+
+        public Communications() { }
+
+        public Communications(string name, string unp, DateTime dateStart, DateTime dateEnd, string docName, string docPath)
         {
-            return fUNP == (obj as Communications).fUNP;
+            Name = name;
+            UNP = unp;
+            DateStart = dateStart;
+            DateEnd = dateEnd;
+            DocPathName = docName;
+            FullDocPath = docPath;
         }
 
-        public override int GetHashCode()
+        public override string ToString()
         {
-            return base.GetHashCode();
+            return UNP + " : " + Name + ", " + State();
+        }
+
+        public string State()
+        {
+            string result = (string)Application.Current.Resources["relation_true"];
+            if (DateEnd <= DateTime.Now)
+            {
+                result = (string)Application.Current.Resources["relation_false"];
+            }
+            else if (DateEnd.AddMonths(-3) <= DateTime.Now)
+            {
+                result = (string)Application.Current.Resources["relation_far"];
+            }
+            return result;
+        }
+
+        public object Clone()
+        {
+            return new Communications(Name, UNP, DateStart, DateEnd, DocPathName, FullDocPath);
         }
     }
 }

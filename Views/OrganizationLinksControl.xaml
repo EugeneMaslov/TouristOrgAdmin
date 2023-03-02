@@ -14,28 +14,28 @@
             </LinearGradientBrush>
         </Grid.Background>
         <Grid.RowDefinitions>
-            <RowDefinition Height="20"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
-            <RowDefinition Height="20"></RowDefinition>
+            <RowDefinition Height="98*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid Grid.Column="0" Grid.Row="1" Margin="10">
             <Grid.Background>
                 <LinearGradientBrush StartPoint="0, 0" EndPoint="1, 1">
                     <GradientStop Offset="-0.2" Color="#2271B3"></GradientStop>
                     <GradientStop Offset="1.2" Color="#252850"></GradientStop>
-                </LinearGradientBrush>
+                    </LinearGradientBrush>
             </Grid.Background>
             <Grid.RowDefinitions>
-                <RowDefinition Height="70"></RowDefinition>
+                <RowDefinition Height="20"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
                 <RowDefinition Height="30"></RowDefinition>
             </Grid.RowDefinitions>
-            <StackPanel Grid.Row="0" Margin="10" Orientation="Vertical" VerticalAlignment="Top">
-                <TextBlock Style="{StaticResource MainText}" Text="{DynamicResource module_main}"></TextBlock>
+            <StackPanel Grid.Row="0" Orientation="Vertical" VerticalAlignment="Top" Background="#003366">
+                <TextBlock Style="{StaticResource MainText}" Text="{DynamicResource module_main}" Margin="0" FontSize="14"></TextBlock>
             </StackPanel>
             <UserControl Grid.Row="1" Content="{Binding ViewModel.SubContentPath}"></UserControl>
             <StackPanel Orientation="Vertical" Grid.Row="2" HorizontalAlignment="Stretch">
-                <Button Style="{StaticResource LoginButton}" Height="30" Margin="1,0,1,0" Content="{DynamicResource back_text}" HorizontalAlignment="Stretch" FontSize="10" Command="{Binding ViewModel.BackCommand}"></Button>
+                <Button Style="{StaticResource UpperNoLoginButton}" Height="30" Margin="0" Content="{DynamicResource back_text}" HorizontalAlignment="Stretch" FontSize="10" Command="{Binding ViewModel.BackCommand}"></Button>
             </StackPanel>
         </Grid>
     </Grid>

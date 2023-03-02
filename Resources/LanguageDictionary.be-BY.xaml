@@ -36,5 +36,14 @@
     <v:String x:Key="module_main">Сувязі арганізацыі</v:String>
     <v:String x:Key="module_manager">Модуль мэнэджэра</v:String>
     <v:String x:Key="module_accountant">Уліковы модуль</v:String>
-
+    <v:String x:Key="add_relation">Дадаць сувязь</v:String>
+    <v:String x:Key="update_relation">Змяніць сувязь</v:String>
+    <v:String x:Key="remove_relation">Выдаліць сувязь</v:String>
+    <v:String x:Key="relation_true">кантракт сапраўдны</v:String>
+    <v:String x:Key="relation_false">тэрмін дзеяння кантракта скончыўся</v:String>
+    <v:String x:Key="relation_far">хутка канец кантракта</v:String>
+    <v:String x:Key="cancel_text">Адмена</v:String>
+    <v:String x:Key="load_document_text">Загрузіць дакумент...</v:String>
+    <v:String x:Key="communication_notCorrect">Налады няправільныя</v:String>
+    
 </ResourceDictionary>

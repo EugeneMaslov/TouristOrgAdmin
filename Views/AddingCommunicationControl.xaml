@@ -1,0 +1,77 @@
+﻿<UserControl x:Class="TouristOrgAdmin.Views.AddingCommunicationControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TouristOrgAdmin.Views" xmlns:viewmodels="clr-namespace:TouristOrgAdmin.ViewModels" xmlns:core="clr-namespace:TouristOrgAdmin.Core" d:DataContext="{d:DesignInstance Type=viewmodels:TouristOrganizationViewModel}"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush StartPoint="0, 0" EndPoint="1, 1">
+                <GradientStop Offset="-0.2" Color="#2271B3"></GradientStop>
+                <GradientStop Offset="1.2" Color="#252850"></GradientStop>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="10"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="10"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Column="1" Grid.Row="1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="30"></RowDefinition>
+                </Grid.RowDefinitions>
+                <StackPanel Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2">
+                    <TextBlock Style="{StaticResource MainText}" Margin="0" Text="{DynamicResource add_relation}" FontSize="15"></TextBlock>
+                </StackPanel>
+                <StackPanel Orientation="Vertical" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Stretch">
+                    <Button Style="{StaticResource ModulesButton}" Content="{DynamicResource cancel_text}" Command="{Binding ViewModel.CancelCommunicationCommand}" Margin="0, 0, 5, 0" HorizontalAlignment="Stretch"></Button>
+                </StackPanel>
+                <StackPanel Orientation="Vertical" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Stretch">
+                    <Button Style="{StaticResource ModulesButton}" Content="{DynamicResource accept_text}" Command="{Binding ViewModel.EndAddingCommunicationCommand}" Margin="5, 0, 0, 0" HorizontalAlignment="Stretch"></Button>
+                </StackPanel>
+                <Grid Grid.Row="1" Grid.Column="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="2*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Style="{StaticResource LoginText}" HorizontalAlignment="Left"  FontSize="20" Margin="10, 0, 10, 10" Text="{DynamicResource unp_text}"/>
+                        <TextBlock Style="{StaticResource LoginText}" HorizontalAlignment="Left" FontSize="20" Margin="10, 0, 10, 10" Text="{DynamicResource name_com_text}"></TextBlock>
+                        <TextBlock Style="{StaticResource LoginText}" HorizontalAlignment="Left" FontSize="20" Margin="10, 5, 10, 10"  Text="{DynamicResource date_start_text}"></TextBlock>
+                        <TextBlock Style="{StaticResource LoginText}" HorizontalAlignment="Left" FontSize="20" Margin="10, 20, 10, 0" Text="{DynamicResource date_end_text}"></TextBlock>
+                    </StackPanel>
+                    <StackPanel Grid.Column="1">
+                        <TextBox Style="{StaticResource LoginTextBox}" HorizontalContentAlignment="Left" Margin="5" Padding="0" FontSize="20" Text="{Binding ViewModel.TempCommunication.UNP, Mode=TwoWay}" MaxLength="9"></TextBox>
+                        <TextBox Style="{StaticResource LoginTextBox}" HorizontalContentAlignment="Left" Margin="5" Padding="0" FontSize="20" Text="{Binding ViewModel.TempCommunication.Name, Mode=TwoWay}"></TextBox>
+                        <DatePicker Style="{StaticResource DatePickerBox}" Margin="5" Padding="0" FontSize="20" SelectedDate="{Binding ViewModel.TempCommunication.DateStart, Mode=TwoWay, StringFormat=dd.MM.yyyy}"></DatePicker>
+                        <DatePicker Style="{StaticResource DatePickerBox}" Margin="5" Padding="0" FontSize="20" SelectedDate="{Binding ViewModel.TempCommunication.DateEnd, Mode=TwoWay, StringFormat=dd.MM.yyyy}"></DatePicker>
+                    </StackPanel>
+                </Grid>
+                <Grid Grid.Row="1" Grid.Column="1">
+                    <StackPanel>
+                        <StackPanel>
+                            <TextBlock Style="{StaticResource LoginText}" Text="{Binding Path=DocPathName, Mode=TwoWay}" DataContext="{Binding Path=ViewModel.TempCommunication}" FontSize="20"></TextBlock>
+                            <Button Style="{StaticResource LoginButton}" Content="{DynamicResource load_document_text}" Command="{Binding ViewModel.LoadFileCommand}" HorizontalAlignment="Stretch"></Button>
+                            <Image Source="/Images/com-icon.png" Width="85"></Image>
+                            <TextBlock Text="{Binding ViewModel.ErrorText}" Style="{StaticResource LoginText}" VerticalAlignment="Bottom"></TextBlock>
+                        </StackPanel>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>

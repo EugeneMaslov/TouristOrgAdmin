@@ -36,5 +36,14 @@
     <v:String x:Key="module_main">Связи организации</v:String>
     <v:String x:Key="module_manager">Модуль менеджера</v:String>
     <v:String x:Key="module_accountant">Учетный модуль</v:String>
+    <v:String x:Key="add_relation">Добавить связь</v:String>
+    <v:String x:Key="update_relation">Изменить связь</v:String>
+    <v:String x:Key="remove_relation">Удалить связь</v:String>
+    <v:String x:Key="relation_true">контракт действителен</v:String>
+    <v:String x:Key="relation_false">срок действия контракта истек</v:String>
+    <v:String x:Key="relation_far">скоро конец контракта</v:String>
+    <v:String x:Key="cancel_text">Отмена</v:String>
+    <v:String x:Key="load_document_text">Загрузить документ...</v:String>
+    <v:String x:Key="communication_notCorrect">Настройки неверны</v:String>
 
 </ResourceDictionary>

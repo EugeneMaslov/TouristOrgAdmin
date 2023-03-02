@@ -18,7 +18,7 @@ namespace TouristOrgAdmin.Views
     /// <summary>
     /// Логика взаимодействия для OrganizationLinksControl.xaml
     /// </summary>
-    public partial class OrganizationLinksControl : UserControl
+    public partial class OrganizationLinksControl : UserControl, ILanguages
     {
         public BaseViewModel ViewModel { get; private set; }
         private static OrganizationLinksControl instance;
@@ -26,6 +26,7 @@ namespace TouristOrgAdmin.Views
         {
             InitializeComponent();
             ViewModel = viewModel;
+            ViewModel.SubContentPath = OrgLinksObserverControl.GetInstance(ViewModel);
             DataContext = this;
         }
         public static OrganizationLinksControl GetInstance(BaseViewModel viewModel)
@@ -54,6 +55,11 @@ namespace TouristOrgAdmin.Views
             catch (Exception)
             {
             }
+        }
+
+        public void LanguageChanged()
+        {
+            //none
         }
     }
 }
