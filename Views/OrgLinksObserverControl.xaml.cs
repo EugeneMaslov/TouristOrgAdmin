@@ -52,18 +52,6 @@ namespace TouristOrgAdmin.Views
             
         }
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            try
-            {
-                //(ViewModel as TouristOrganizationViewModel).SelectCommunications();
-            }
-            catch (Exception)
-            {
-            }
-            
-        }
-
         private void orgList_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             if (e.ChangedButton == MouseButton.Left)

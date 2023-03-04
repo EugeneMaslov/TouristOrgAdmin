@@ -49,5 +49,17 @@
     <v:String x:Key="date_end_text">End date:</v:String>
     <v:String x:Key="load_document_text">Load document...</v:String>
     <v:String x:Key="communication_notCorrect">Communication settings not correct</v:String>
+    <v:String x:Key="communication_remove_quest">Do you really want to delete the communication?</v:String>
+    <v:String x:Key="communication_remove_text">Communication removing</v:String>
+    <v:String x:Key="employee_add">Add employee</v:String>
+    <v:String x:Key="employee_remove">Remove employee</v:String>
+    <v:String x:Key="employee_update">Change employee</v:String>
+    <v:String x:Key="status_text">Status adding</v:String>
+    <v:String x:Key="roles_text">Roles adding</v:String>
+    <v:String x:Key="status_add">Add new status</v:String>
+    <v:String x:Key="status_update">Change status</v:String>
+    <v:String x:Key="status_remove">Remove status</v:String>
+    <v:String x:Key="status_remove_quest">Are you serious about deleting a status?</v:String>
+    <v:String x:Key="status_remove_text">Removing status</v:String>
 
 </ResourceDictionary>

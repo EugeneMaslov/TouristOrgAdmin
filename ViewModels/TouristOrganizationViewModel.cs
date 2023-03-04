@@ -13,6 +13,8 @@ using System.Collections.ObjectModel;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Win32;
 using System.IO;
+using TouristOrgAdmin.Views.Manager;
+using TouristOrgAdmin.Views.Manager.Status;
 
 namespace TouristOrgAdmin.ViewModels
 {
@@ -28,11 +30,17 @@ namespace TouristOrgAdmin.ViewModels
         private AdminAccount adminAccount;
         private Communications selectedCommunication;
         private Communications tempCommunication;
+        private Employees selectedEmployee;
+        private Employees tempEmployee;
+        private Statuses selectedStatus;
+        private Statuses tempStatus;
         private bool isTrue = true;
         private bool isFalse = true;
         private bool isFar = true;
 
         public ObservableCollection<Communications> Communications { get; set; }
+        public ObservableCollection<Employees> Employees { get; set; }
+        public ObservableCollection<Statuses> Statuses { get; set; } 
         public AdminAccount TempAdminAccount { get; set; }
         public RelayCommand LoginCommand { protected set; get; }
         public RelayCommand RegisterCommand { protected set; get; }
@@ -51,6 +59,16 @@ namespace TouristOrgAdmin.ViewModels
         public RelayCommand RemoveRelationCommand { protected set; get; }
         public RelayCommand LoadFileCommand { protected set; get; }
         public RelayCommand UpdateCommunicationCommand { protected set; get; }
+        public RelayCommand ManagerModuleCommand { protected set; get; }
+        public RelayCommand SelectEmployeeCommand { protected set; get; }
+        public RelayCommand GoStatusCommand { protected set; get; }
+        public RelayCommand EndManagerSubCommnad { protected set; get; }
+        public RelayCommand SelectStatusCommand { protected set; get; }
+        public RelayCommand CancelAddingStatusCommand { protected set; get; }
+        public RelayCommand EndAddingStatusCommand { protected set; get; }
+        public RelayCommand GoAddingStatusCommand { protected set; get; }
+        public RelayCommand GoChangeStatusCommand { protected set; get; }
+        public RelayCommand RemoveStatusCommand { protected set; get; }
         public string TempString { get; set; }
         public string Like { get; set; } = "";
         
@@ -117,6 +135,16 @@ namespace TouristOrgAdmin.ViewModels
             }
         }
 
+        public Employees SelectedEmployee
+        {
+            get => selectedEmployee;
+            set
+            {
+                selectedEmployee = value;
+                OnPropertyChanged("SelectedEmployee");
+            }
+        }
+
         public Communications TempCommunication
         {
             get => tempCommunication;
@@ -124,6 +152,36 @@ namespace TouristOrgAdmin.ViewModels
             {
                 tempCommunication = value;
                 OnPropertyChanged("TempCommunication");
+            }
+        }
+
+        public Employees TempEmployee
+        {
+            get => tempEmployee;
+            set
+            {
+                tempEmployee = value;
+                OnPropertyChanged("TempEmployee");
+            }
+        }
+
+        public Statuses SelectedStatus
+        {
+            get => selectedStatus;
+            set
+            {
+                selectedStatus = value;
+                OnPropertyChanged("SelectedStatus");
+            }
+        }
+
+        public Statuses TempStatus
+        {
+            get => tempStatus;
+            set
+            {
+                tempStatus = value;
+                OnPropertyChanged("TempStatus");
             }
         }
 
@@ -206,9 +264,21 @@ namespace TouristOrgAdmin.ViewModels
             RemoveRelationCommand = new RelayCommand(_ => RemoveRelation());
             LoadFileCommand = new RelayCommand(_ => LoadFile());
             UpdateCommunicationCommand = new RelayCommand(_ => UpdateCommunication());
+            ManagerModuleCommand = new RelayCommand(_ => GoManagerModule());
+            SelectEmployeeCommand = new RelayCommand(_ => SelectEmployee());
+            GoStatusCommand = new RelayCommand(_ => GoStatus());
+            EndManagerSubCommnad = new RelayCommand(_ => EndManager());
+            SelectStatusCommand = new RelayCommand(_ => SelectStatus());
+            CancelAddingStatusCommand = new RelayCommand(_ => CancelAddingStatus());
+            EndAddingStatusCommand = new RelayCommand(_ => EndAddingStatus());
+            GoAddingStatusCommand = new RelayCommand(_ => GoAddingStatus());
+            GoChangeStatusCommand = new RelayCommand(_ => GoChangingStatus());
+            RemoveStatusCommand = new RelayCommand(_ => RemoveStatus());
             AdminAccount = AdminAccount.GetInstance();
             TempAdminAccount = new AdminAccount();
             Communications = new ObservableCollection<Communications>();
+            Employees = new ObservableCollection<Employees>();
+            Statuses = new ObservableCollection<Statuses>();
         }
 
         private void DoLogin()
@@ -389,7 +459,6 @@ namespace TouristOrgAdmin.ViewModels
                         }
                     }
                 }
-
             }
         }
 
@@ -448,10 +517,13 @@ namespace TouristOrgAdmin.ViewModels
         {
             if (SelectedCommunication != null)
             {
-                DB.Communications.Remove(SelectedCommunication);
-                DB.SaveChanges();
-                SelectedCommunication = null;
-                SelectCommunications();
+                if (MessageBox.Show((string)Application.Current.Resources["communication_remove_quest"], (string)Application.Current.Resources["communication_remove_text"], MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                {
+                    DB.Communications.Remove(SelectedCommunication);
+                    DB.SaveChanges();
+                    SelectedCommunication = null;
+                    SelectCommunications();
+                }
             }
         }
 
@@ -498,6 +570,153 @@ namespace TouristOrgAdmin.ViewModels
                 proc.StartInfo.FileName = SelectedCommunication.FullDocPath;
                 proc.StartInfo.UseShellExecute = true;
                 proc.Start();
+            }
+        }
+
+        private void GoManagerModule()
+        {
+            MainWindow.StaticNavigate(ManagerControl.GetInstance(this), this);
+            SubContentPath = ManagerObserverControl.GetInstance(this);
+        }
+
+        public void SelectEmployee()
+        {
+            if (Like != null)
+            {
+                if (Employees != null)
+                {
+                    Employees.Clear();
+                    while (Employees.Any())
+                    {
+                        Employees.RemoveAt(Employees.Count - 1);
+                    }
+                }
+
+                IEnumerable<Employees> employees = null;
+
+                if (Like == "")
+                {
+                    employees = DB.Employees.ToList();
+                }
+                else
+                {
+                    employees = DB.Employees.Where(x => x.FullName.Contains(Like) || x.Role.RoleName.Contains(Like) || x.Status.StatusName.Contains(Like));
+                }
+
+                foreach (Employees item in employees)
+                {
+                    if (!Employees.Contains(item))
+                    {
+                        Employees.Add(item);
+                    }
+                }
+            }
+        }
+
+        private void GoStatus()
+        {
+            ManagerControl.StaticNavigate(StatusObserverControl.GetInstance(this), this);
+        }
+
+        private void EndManager()
+        {
+            ManagerControl.StaticNavigate(ManagerObserverControl.GetInstance(this), this);
+            TempEmployee = null;
+            SelectEmployee();
+        }
+
+        public void SelectStatus()
+        {
+            if (Like != null)
+            {
+                if (Statuses != null)
+                {
+                    Statuses.Clear();
+                    while (Statuses.Any())
+                    {
+                        Statuses.RemoveAt(Statuses.Count - 1);
+                    }
+                }
+
+                IEnumerable<Statuses> statuses = null;
+
+                if (Like == "")
+                {
+                    statuses = DB.Statuses.ToList();
+                }
+                else
+                {
+                    statuses = DB.Statuses.Where(x => x.StatusName.Contains(Like));
+                }
+
+                foreach (Statuses item in statuses)
+                {
+                    if (!Statuses.Contains(item))
+                    {
+                        Statuses.Add(item);
+                    }
+                }
+            }
+        }
+
+        private void GoAddingStatus()
+        {
+            ManagerControl.StaticNavigate(StatusAddingControl.GetInstance(this), this);
+            TempStatus = new Statuses();
+        }
+
+        private void CancelAddingStatus()
+        {
+            ManagerControl.StaticNavigate(StatusObserverControl.GetInstance(this), this);
+            TempStatus = null;
+            SelectStatus();
+        }
+
+        private void EndAddingStatus()
+        {
+            if (tempStatus.StatusName != null && tempStatus.StatusName != "")
+            {
+                if (!DB.Statuses.Where(x => x.StatusID == tempStatus.StatusID).Any())
+                {
+                    tempStatus.StatusID = 0;
+                    DB.Statuses.Add(tempStatus);
+                }
+                else
+                {
+                    SelectedStatus.StatusName = TempStatus.StatusName;
+                    DB.Entry(SelectedStatus).State = EntityState.Modified;
+                }
+                DB.SaveChanges();
+                SelectedStatus = null;
+                TempStatus = null;
+                CancelAddingStatus();
+            }
+            else
+            {
+                IsCommunicationError = true;
+            }
+        }
+
+        private void GoChangingStatus()
+        {
+            if (SelectedStatus != null)
+            {
+                TempStatus = SelectedStatus.Clone() as Statuses;
+                ManagerControl.StaticNavigate(StatusAddingControl.GetInstance(this), this);
+            }
+        }
+
+        private void RemoveStatus()
+        {
+            if (SelectedStatus != null)
+            {
+                if (MessageBox.Show((string)Application.Current.Resources["status_remove_quest"], (string)Application.Current.Resources["status_remove_text"], MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                {
+                    DB.Statuses.Remove(SelectedStatus);
+                    DB.SaveChanges();
+                    SelectedStatus = null;
+                    SelectStatus();
+                }
             }
         }
     }

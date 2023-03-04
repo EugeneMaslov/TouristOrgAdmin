@@ -45,5 +45,17 @@
     <v:String x:Key="cancel_text">Отмена</v:String>
     <v:String x:Key="load_document_text">Загрузить документ...</v:String>
     <v:String x:Key="communication_notCorrect">Настройки неверны</v:String>
+    <v:String x:Key="communication_remove_quest">Вы действительно хотите удалить связь?</v:String>
+    <v:String x:Key="communication_remove_text">Удаление связи</v:String>
+    <v:String x:Key="employee_add">Добавить сотрудника</v:String>
+    <v:String x:Key="employee_remove">Удалить сотрудника</v:String>
+    <v:String x:Key="employee_update">Изменить сотрудника</v:String>
+    <v:String x:Key="status_text">Добавление статуса</v:String>
+    <v:String x:Key="roles_text">Добавление ролей</v:String>
+    <v:String x:Key="status_add">Добавить новый статус</v:String>
+    <v:String x:Key="status_update">Изменить статус</v:String>
+    <v:String x:Key="status_remove">Удалить статус</v:String>
+    <v:String x:Key="status_remove_quest">Вы серьезно желаете удалить статус?</v:String>
+    <v:String x:Key="status_remove_text">Удаление статуса</v:String>
 
 </ResourceDictionary>

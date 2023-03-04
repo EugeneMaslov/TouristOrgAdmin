@@ -57,7 +57,7 @@
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Visibility="{Binding ViewModel.AdminAccount.IsManagerV}">
                     <Image Source="/Images/manager-icon.png" MaxWidth="60"></Image>
-                    <Button Style="{StaticResource ModulesButton}" Content="{DynamicResource module_manager}" IsEnabled="{Binding ViewModel.AdminAccount.IsManager}" MinWidth="160"></Button>
+                    <Button Style="{StaticResource ModulesButton}" Content="{DynamicResource module_manager}" Command="{Binding ViewModel.ManagerModuleCommand}" IsEnabled="{Binding ViewModel.AdminAccount.IsManager}" MinWidth="160"></Button>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Visibility="{Binding ViewModel.AdminAccount.IsAccountantV}">
                     <Image Source="/Images/accountant-icon.png" MaxWidth="60"></Image>

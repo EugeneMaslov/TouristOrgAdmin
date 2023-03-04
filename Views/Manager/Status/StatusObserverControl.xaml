@@ -1,9 +1,9 @@
-﻿<UserControl x:Class="TouristOrgAdmin.Views.OrgLinksObserverControl"
+﻿<UserControl x:Class="TouristOrgAdmin.Views.Manager.Status.StatusObserverControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:TouristOrgAdmin.Views" xmlns:viewmodels="clr-namespace:TouristOrgAdmin.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:TouristOrganizationViewModel}"
+             xmlns:local="clr-namespace:TouristOrgAdmin.Views.Manager.Status" xmlns:viewmodels="clr-namespace:TouristOrgAdmin.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:TouristOrganizationViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
@@ -36,8 +36,8 @@
                 </Grid.RowDefinitions>
                 <StackPanel HorizontalAlignment="Stretch" Grid.Row="0">
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
-                        <TextBox Style="{StaticResource SearchTextBox}" Text="{Binding ViewModel.Like}"></TextBox>
-                        <Button Style="{StaticResource SearchButton}" Command="{Binding ViewModel.SelectCommunication}">
+                        <TextBox Style="{StaticResource SearchTextBox}" Text="{Binding ViewModel.Like, Mode=TwoWay}"></TextBox>
+                        <Button Style="{StaticResource SearchButton}" Command="{Binding ViewModel.SelectStatusCommand}">
                             <Button.Content>
                                 <Image Source="/Images/free-icon-searching-3795241.png" Stretch="Fill"></Image>
                             </Button.Content>
@@ -45,36 +45,24 @@
                     </StackPanel>
                 </StackPanel>
                 <ListView x:Name="orgList" Style="{StaticResource HistoryListView}" 
-                          ItemsSource="{Binding ViewModel.Communications, Mode=TwoWay}"
-                          SelectedItem="{Binding ViewModel.SelectedCommunication, Mode=TwoWay}"
-                          MouseDoubleClick="orgList_MouseDoubleClick"
+                          ItemsSource="{Binding ViewModel.Statuses, Mode=TwoWay}"
+                          SelectedItem="{Binding ViewModel.SelectedStatus, Mode=TwoWay}"
                           Grid.Row="1">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Style="{StaticResource LoginText}" Text="{Binding  Path=NameUNPString}" Margin="0"></TextBlock>
+                                <TextBlock Style="{StaticResource LoginText}" Text="{Binding  Path=StatusName}" Margin="0"></TextBlock>
                             </StackPanel>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
             </Grid>
+            <Button VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="100" Style="{StaticResource ModulesButton}" Content="{DynamicResource back_text}" Command="{Binding ViewModel.EndManagerSubCommnad}"></Button>
             <Grid Grid.Column="1">
                 <StackPanel VerticalAlignment="Top">
-                    <Button HorizontalAlignment="Stretch" Style="{StaticResource ModulesButton}" Content="{DynamicResource add_relation}" Command="{Binding ViewModel.AddCommunicationCommand}"></Button>
-                    <Button HorizontalAlignment="Stretch" Style="{StaticResource ModulesButton}" Content="{DynamicResource update_relation}" Command="{Binding ViewModel.UpdateCommunicationCommand}"></Button>
-                    <Button HorizontalAlignment="Stretch" Style="{StaticResource ModulesButton}" Content="{DynamicResource remove_relation}" Command="{Binding ViewModel.RemoveRelationCommand}"></Button>
-                    <StackPanel Orientation="Horizontal" Margin="5, 0, 0, 0">
-                        <CheckBox Style="{StaticResource CircleCheckboxFL}" Width="20" Height="20" IsChecked="{Binding ViewModel.IsTrue, Mode=TwoWay}"></CheckBox>
-                        <TextBlock Style="{StaticResource LoginText}" Text="{DynamicResource relation_true}"></TextBlock>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" Margin="5, 0, 0, 0">
-                        <CheckBox Style="{StaticResource CircleCheckboxFL}" Width="20" Height="20" IsChecked="{Binding ViewModel.IsFalse, Mode=TwoWay}"></CheckBox>
-                        <TextBlock Style="{StaticResource LoginText}" Text="{DynamicResource relation_false}"></TextBlock>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" Margin="5, 0, 0, 0">
-                        <CheckBox Style="{StaticResource CircleCheckboxFL}" Width="20" Height="20" IsChecked="{Binding ViewModel.IsFar, Mode=TwoWay}"></CheckBox>
-                        <TextBlock Style="{StaticResource LoginText}" Text="{DynamicResource relation_far}"></TextBlock>
-                    </StackPanel>
+                    <Button HorizontalAlignment="Stretch" Style="{StaticResource ModulesButton}" Content="{DynamicResource status_add}" Command="{Binding ViewModel.GoAddingStatusCommand}"></Button>
+                    <Button HorizontalAlignment="Stretch" Style="{StaticResource ModulesButton}" Content="{DynamicResource status_update}" Command="{Binding ViewModel.GoChangeStatusCommand}"></Button>
+                    <Button HorizontalAlignment="Stretch" Style="{StaticResource ModulesButton}" Content="{DynamicResource status_remove}" Command="{Binding ViewModel.RemoveStatusCommand}"></Button>
                 </StackPanel>
             </Grid>
         </Grid>
