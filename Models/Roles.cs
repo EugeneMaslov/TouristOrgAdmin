@@ -6,7 +6,7 @@ using TouristOrgAdmin.Core;
 
 namespace TouristOrgAdmin.Models
 {
-    public class Roles : PropertyObject
+    public class Roles : PropertyObject, ICloneable
     {
         private int roleID;
         private string roleName;
@@ -33,6 +33,7 @@ namespace TouristOrgAdmin.Models
             {
                 roleName = value;
                 OnPropertyChanged("RoleName");
+                OnPropertyChanged("RoleToString");
             }
         }
 
@@ -45,10 +46,37 @@ namespace TouristOrgAdmin.Models
                 {
                     rate = value;
                     OnPropertyChanged("Rate");
+                    OnPropertyChanged("RoleToString");
                 }
             }
         }
 
         public List<Employees> Employees { get; set; }
+
+        public Roles()
+        {
+            roleID = -1;
+        }
+
+        public Roles(int roleID, string roleName, double rate)
+        {
+            RoleID = roleID;
+            RoleName = roleName;
+            Rate = rate;
+        }
+
+        public string RoleToString => ToString();
+
+        public override string ToString()
+        {
+            return RoleName + ", " + Rate.ToString();
+        }
+
+        public object Clone()
+        {
+            Roles result = new Roles(RoleID, RoleName, Rate);
+            result.Employees = Employees;
+            return result; 
+        }
     }
 }

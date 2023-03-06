@@ -61,5 +61,11 @@
     <v:String x:Key="status_remove">Remove status</v:String>
     <v:String x:Key="status_remove_quest">Are you serious about deleting a status?</v:String>
     <v:String x:Key="status_remove_text">Removing status</v:String>
+    <v:String x:Key="roles_add">Add new role</v:String>
+    <v:String x:Key="roles_update">Change role</v:String>
+    <v:String x:Key="roles_remove">Remove role</v:String>
+    <v:String x:Key="roles_remove_quest">Are you serious about deleting a role?</v:String>
+    <v:String x:Key="roles_remove_text">Removing role</v:String>
+    <v:String x:Key="roles_rate">Rate:</v:String>
 
 </ResourceDictionary>

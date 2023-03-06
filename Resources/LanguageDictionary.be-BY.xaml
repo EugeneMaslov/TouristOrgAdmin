@@ -43,6 +43,10 @@
     <v:String x:Key="relation_false">тэрмін дзеяння кантракта скончыўся</v:String>
     <v:String x:Key="relation_far">хутка канец кантракта</v:String>
     <v:String x:Key="cancel_text">Адмена</v:String>
+    <v:String x:Key="unp_text">УНП:</v:String>
+    <v:String x:Key="name_com_text">Імя:</v:String>
+    <v:String x:Key="date_start_text">Пачатковая дата:</v:String>
+    <v:String x:Key="date_end_text">Канчатковая дата:</v:String>
     <v:String x:Key="load_document_text">Загрузіць дакумент...</v:String>
     <v:String x:Key="communication_notCorrect">Налады няправільныя</v:String>
     <v:String x:Key="communication_remove_quest">Вы сапраўды хочаце выдаліць сувязь?</v:String>
@@ -57,6 +61,12 @@
     <v:String x:Key="status_remove">Выдаліць статус</v:String>
     <v:String x:Key="status_remove_quest">Вы сур'ёзна жадаеце выдаліць статус?</v:String>
     <v:String x:Key="status_remove_text">Выдаленне статусу</v:String>
+    <v:String x:Key="roles_add">Дадаць новую ролю</v:String>
+    <v:String x:Key="roles_update">Змяніць ролю</v:String>
+    <v:String x:Key="roles_remove">Выдаліць ролю</v:String>
+    <v:String x:Key="roles_remove_quest">Вы сапраўды жадаеце выдаліць ролю?</v:String>
+    <v:String x:Key="roles_remove_text">Выдаленне ролі</v:String>
+    <v:String x:Key="roles_rate">Стаўка:</v:String>
 
 </ResourceDictionary>
     

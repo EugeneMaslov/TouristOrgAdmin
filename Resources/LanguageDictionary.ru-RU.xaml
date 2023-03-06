@@ -43,6 +43,10 @@
     <v:String x:Key="relation_false">срок действия контракта истек</v:String>
     <v:String x:Key="relation_far">скоро конец контракта</v:String>
     <v:String x:Key="cancel_text">Отмена</v:String>
+    <v:String x:Key="unp_text">УНП:</v:String>
+    <v:String x:Key="name_com_text">Имя:</v:String>
+    <v:String x:Key="date_start_text">Начальная дата:</v:String>
+    <v:String x:Key="date_end_text">Конечная дата:</v:String>
     <v:String x:Key="load_document_text">Загрузить документ...</v:String>
     <v:String x:Key="communication_notCorrect">Настройки неверны</v:String>
     <v:String x:Key="communication_remove_quest">Вы действительно хотите удалить связь?</v:String>
@@ -57,5 +61,11 @@
     <v:String x:Key="status_remove">Удалить статус</v:String>
     <v:String x:Key="status_remove_quest">Вы серьезно желаете удалить статус?</v:String>
     <v:String x:Key="status_remove_text">Удаление статуса</v:String>
+    <v:String x:Key="roles_add">Добавить новую роль</v:String>
+    <v:String x:Key="roles_update">Изменить роль</v:String>
+    <v:String x:Key="roles_remove">Удалить роль</v:String>
+    <v:String x:Key="roles_remove_quest">Вы действительно хотите удалить роль?</v:String>
+    <v:String x:Key="roles_remove_text">Удаление роли</v:String>
+    <v:String x:Key="roles_rate">Ставка:</v:String>
 
 </ResourceDictionary>

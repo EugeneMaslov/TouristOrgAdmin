@@ -81,7 +81,6 @@ namespace TouristOrgAdmin.Models
         }
 
         public int? RoleID { get; set; }
-       
         public Roles Role { get; set; }
         public int? StatusID { get; set; }
         public Statuses Status { get; set; }

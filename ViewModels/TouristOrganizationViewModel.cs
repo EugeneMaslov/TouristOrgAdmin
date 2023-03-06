@@ -1,30 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
-using System.Windows.Input;
-using TouristOrgAdmin.Core;
-using TouristOrgAdmin.Models;
-using TouristOrgAdmin.Controllers;
 using System.Linq;
-using TouristOrgAdmin.Views;
-using System.Windows.Controls;
 using System.Windows;
 using System.Collections.ObjectModel;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Win32;
 using System.IO;
+using TouristOrgAdmin.Core;
+using TouristOrgAdmin.Views;
+using TouristOrgAdmin.Models;
+using TouristOrgAdmin.Controllers;
 using TouristOrgAdmin.Views.Manager;
 using TouristOrgAdmin.Views.Manager.Status;
+using TouristOrgAdmin.Views.Manager.Role;
 
 namespace TouristOrgAdmin.ViewModels
 {
     public class TouristOrganizationViewModel : BaseViewModel, ILanguages
     {
+        #region Fields
         private bool isErrorOnLogin;
         private bool isErrorPassword;
         private bool isErrorOnRegister;
         private bool isUnknownError;
-        private bool isCommunicationError;
+        private bool isSettingsError;
         private TouristCompanyContext db = new TouristCompanyContext();
         private string errorText = "";
         private AdminAccount adminAccount;
@@ -34,13 +33,17 @@ namespace TouristOrgAdmin.ViewModels
         private Employees tempEmployee;
         private Statuses selectedStatus;
         private Statuses tempStatus;
+        private Roles selectedRole;
+        private Roles tempRole;
         private bool isTrue = true;
         private bool isFalse = true;
         private bool isFar = true;
-
+        #endregion
+        #region Properties
         public ObservableCollection<Communications> Communications { get; set; }
         public ObservableCollection<Employees> Employees { get; set; }
         public ObservableCollection<Statuses> Statuses { get; set; } 
+        public ObservableCollection<Roles> Roles { get; set; }
         public AdminAccount TempAdminAccount { get; set; }
         public RelayCommand LoginCommand { protected set; get; }
         public RelayCommand RegisterCommand { protected set; get; }
@@ -69,6 +72,13 @@ namespace TouristOrgAdmin.ViewModels
         public RelayCommand GoAddingStatusCommand { protected set; get; }
         public RelayCommand GoChangeStatusCommand { protected set; get; }
         public RelayCommand RemoveStatusCommand { protected set; get; }
+        public RelayCommand SelectRolesCommand { protected set; get; }
+        public RelayCommand GoRolesCommand { protected set; get; }
+        public RelayCommand GoRolesAddingCommand { protected set; get; }
+        public RelayCommand CancelAddingRolesCommand { protected set; get; }
+        public RelayCommand EndAddingRoleCommnad { protected set; get; }
+        public RelayCommand GoChangeRoleCommand { protected set; get; }
+        public RelayCommand RemoveRoleCommand { protected set; get; }
         public string TempString { get; set; }
         public string Like { get; set; } = "";
         
@@ -185,6 +195,26 @@ namespace TouristOrgAdmin.ViewModels
             }
         }
 
+        public Roles SelectedRole
+        {
+            get => selectedRole;
+            set
+            {
+                selectedRole = value;
+                OnPropertyChanged("SelectedRole");
+            }
+        }
+
+        public Roles TempRole
+        {
+            get => tempRole;
+            set
+            {
+                tempRole = value;
+                OnPropertyChanged("TempRole");
+            }
+        }
+
         public bool IsErrorOnLogin
         {
             get => isErrorOnLogin;
@@ -225,13 +255,13 @@ namespace TouristOrgAdmin.ViewModels
             }
         }
 
-        public bool IsCommunicationError
+        public bool IsSettingsError
         {
-            get => isCommunicationError;
+            get => isSettingsError;
             set
             {
-                isCommunicationError = value;
-                ErrorText = IsCommunicationError ? (string)Application.Current.Resources["communication_notCorrect"] : "";
+                isSettingsError = value;
+                ErrorText = IsSettingsError ? (string)Application.Current.Resources["communication_notCorrect"] : "";
             }
         }
 
@@ -244,7 +274,8 @@ namespace TouristOrgAdmin.ViewModels
                 OnPropertyChanged("ErrorText");
             }
         }
-
+        #endregion
+        #region Init
         public TouristOrganizationViewModel()
         {
             LoginCommand = new RelayCommand(_ => DoLogin());
@@ -274,13 +305,22 @@ namespace TouristOrgAdmin.ViewModels
             GoAddingStatusCommand = new RelayCommand(_ => GoAddingStatus());
             GoChangeStatusCommand = new RelayCommand(_ => GoChangingStatus());
             RemoveStatusCommand = new RelayCommand(_ => RemoveStatus());
+            SelectRolesCommand = new RelayCommand(_ => SelectRoles());
+            GoRolesCommand = new RelayCommand(_ => GoRoles());
+            GoRolesAddingCommand = new RelayCommand(_ => GoAddingRole());
+            CancelAddingRolesCommand = new RelayCommand(_ => CancelAddingRole());
+            EndAddingRoleCommnad = new RelayCommand(_ => EndAddingRole());
+            GoChangeRoleCommand = new RelayCommand(_ => GoChangingRoles());
+            RemoveRoleCommand = new RelayCommand(_ => RemoveRole());
             AdminAccount = AdminAccount.GetInstance();
             TempAdminAccount = new AdminAccount();
             Communications = new ObservableCollection<Communications>();
             Employees = new ObservableCollection<Employees>();
             Statuses = new ObservableCollection<Statuses>();
+            Roles = new ObservableCollection<Roles>();
         }
-
+        #endregion
+        #region Login&Register
         private void DoLogin()
         {
             
@@ -340,7 +380,8 @@ namespace TouristOrgAdmin.ViewModels
                 MainWindow.StaticNavigate(LoginControl.GetInstance(this), this);
             }
         }
-
+        #endregion
+        #region AccountChange
         private void ChangePassword()
         {
             MainWindow.StaticNavigate(ChangePasswordControl.GetInstance(this), this);
@@ -403,13 +444,8 @@ namespace TouristOrgAdmin.ViewModels
             }
             Back();
         }
-
-        private void GoOrganizationLink()
-        {
-            MainWindow.StaticNavigate(OrganizationLinksControl.GetInstance(this), this);
-            SubContentPath = OrgLinksObserverControl.GetInstance(this);
-        }
-
+        #endregion
+        #region Language
         public void LanguageChanged()
         {
             if (ContentPath != null)
@@ -420,6 +456,13 @@ namespace TouristOrgAdmin.ViewModels
             {
                 ((ILanguages)SubContentPath).LanguageChanged();
             }
+        }
+        #endregion
+        #region ModuleCommunications
+        private void GoOrganizationLink()
+        {
+            MainWindow.StaticNavigate(OrganizationLinksControl.GetInstance(this), this);
+            SubContentPath = OrgLinksObserverControl.GetInstance(this);
         }
 
         public void SelectCommunications()
@@ -509,7 +552,7 @@ namespace TouristOrgAdmin.ViewModels
             }
             else
             {
-                IsCommunicationError = true;
+                IsSettingsError = true;
             }
         }
 
@@ -572,13 +615,14 @@ namespace TouristOrgAdmin.ViewModels
                 proc.Start();
             }
         }
-
+        #endregion
+        #region ModuleManager
+        #region Employees
         private void GoManagerModule()
         {
             MainWindow.StaticNavigate(ManagerControl.GetInstance(this), this);
             SubContentPath = ManagerObserverControl.GetInstance(this);
         }
-
         public void SelectEmployee()
         {
             if (Like != null)
@@ -612,7 +656,8 @@ namespace TouristOrgAdmin.ViewModels
                 }
             }
         }
-
+        #endregion
+        #region Statuses
         private void GoStatus()
         {
             ManagerControl.StaticNavigate(StatusObserverControl.GetInstance(this), this);
@@ -693,7 +738,7 @@ namespace TouristOrgAdmin.ViewModels
             }
             else
             {
-                IsCommunicationError = true;
+                IsSettingsError = true;
             }
         }
 
@@ -719,5 +764,112 @@ namespace TouristOrgAdmin.ViewModels
                 }
             }
         }
+        #endregion
+        #region Roles
+        private void GoRoles()
+        {
+            ManagerControl.StaticNavigate(RolesObserverControl.GetInstance(this), this);
+        }
+        public void SelectRoles()
+        {
+            if (Like != null)
+            {
+                if (Roles != null)
+                {
+                    Roles.Clear();
+                    while (Roles.Any())
+                    {
+                        Roles.RemoveAt(Roles.Count - 1);
+                    }
+                }
+
+                IEnumerable<Roles> roles = null;
+
+                if (Like == "")
+                {
+                    roles = DB.Roles.ToList();
+                }
+                else
+                {
+                    roles = DB.Roles.Where(x => x.RoleName.Contains(Like));
+                }
+
+                foreach (Roles item in roles)
+                {
+                    if (!Roles.Contains(item))
+                    {
+                        Roles.Add(item);
+                    }
+                }
+            }
+        }
+        private void GoAddingRole()
+        {
+            ManagerControl.StaticNavigate(RolesAddingControl.GetInstance(this), this);
+            TempRole = new Roles();
+        }
+
+        private void CancelAddingRole()
+        {
+            ManagerControl.StaticNavigate(RolesObserverControl.GetInstance(this), this);
+            TempRole = null;
+            SelectRoles();
+        }
+
+        private void EndAddingRole()
+        {
+            try
+            {
+                if (tempRole.RoleName != null && tempRole.RoleName != "")
+                {
+                    if (!DB.Roles.Where(x => x.RoleID == tempRole.RoleID).Any())
+                    {
+                        tempRole.RoleID = 0;
+                        DB.Roles.Add(tempRole);
+                    }
+                    else
+                    {
+                        SelectedRole.Rate = TempRole.Rate;
+                        SelectedRole.RoleName = TempRole.RoleName;
+                        DB.Entry(SelectedRole).State = EntityState.Modified;
+                    }
+                    DB.SaveChanges();
+                    SelectedRole = null;
+                    TempRole = null;
+                    CancelAddingRole();
+                }
+                else
+                {
+                    IsSettingsError = true;
+                }
+            }
+            catch (Exception)
+            {
+                IsSettingsError = true;
+            }
+        }
+        private void GoChangingRoles()
+        {
+            if (SelectedRole != null)
+            {
+                TempRole = SelectedRole.Clone() as Roles;
+                ManagerControl.StaticNavigate(RolesAddingControl.GetInstance(this), this);
+            }
+        }
+        private void RemoveRole()
+        {
+            if (SelectedRole != null)
+            {
+                if (MessageBox.Show((string)Application.Current.Resources["roles_remove_quest"], (string)Application.Current.Resources["roles_remove_text"], MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                {
+                    DB.Roles.Remove(SelectedRole);
+                    DB.SaveChanges();
+                    SelectedRole = null;
+                    SelectRoles();
+                }
+            }
+        }
+        #endregion
+        #endregion
     }
 }

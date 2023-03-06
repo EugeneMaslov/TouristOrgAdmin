@@ -157,9 +157,12 @@ namespace TouristOrgAdmin.Models
 
         public bool IsSame(string sameString)
         {
-            if (password == ConvertToSHA256(sameString))
+            if (sameString != null)
             {
-                return true;
+                if (password == ConvertToSHA256(sameString))
+                {
+                    return true;
+                }
             }
             return false;
         }
