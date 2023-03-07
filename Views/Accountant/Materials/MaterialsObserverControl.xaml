@@ -1,0 +1,70 @@
+﻿<UserControl x:Class="TouristOrgAdmin.Views.Accountant.Materials.MaterialsObserverControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TouristOrgAdmin.Views.Accountant.Materials" xmlns:core="clr-namespace:TouristOrgAdmin.Core" xmlns:viewmodels="clr-namespace:TouristOrgAdmin.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:TouristOrganizationViewModel}"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush StartPoint="0, 0" EndPoint="1, 1">
+                <GradientStop Offset="-0.2" Color="#2271B3"></GradientStop>
+                <GradientStop Offset="1.2" Color="#252850"></GradientStop>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="10"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="10"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Column="1" Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1.8*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"></RowDefinition>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <StackPanel HorizontalAlignment="Stretch" Grid.Row="0">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
+                        <TextBox Style="{StaticResource SearchTextBox}" Text="{Binding ViewModel.Like}"></TextBox>
+                        <Button Style="{StaticResource SearchButton}" Command="{Binding ViewModel.SelectMaterialCommand}">
+                            <Button.Content>
+                                <Image Source="/Images/free-icon-searching-3795241.png" Stretch="Fill"></Image>
+                            </Button.Content>
+                        </Button>
+                    </StackPanel>
+                </StackPanel>
+                <ListView x:Name="orgList" Style="{StaticResource HistoryListView}" 
+                          ItemsSource="{Binding ViewModel.Materials, Mode=TwoWay}"
+                          SelectedItem="{Binding ViewModel.SelectedMaterial, Mode=TwoWay}"
+                          Grid.Row="1">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Style="{StaticResource LoginText}" Text="{Binding  Path=MaterialString}" Margin="0"></TextBlock>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+            <Button VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="100" Style="{StaticResource ModulesButton}" Content="{DynamicResource back_text}" Command="{Binding ViewModel.BackToAccountantCommand}"></Button>
+            <Grid Grid.Column="1">
+                <StackPanel VerticalAlignment="Top">
+                    <Button HorizontalAlignment="Stretch" Style="{StaticResource ModulesButton}" Content="{DynamicResource materials_add}" Command="{Binding ViewModel.GoAddingMaterialsCommand}"></Button>
+                    <Button HorizontalAlignment="Stretch" Style="{StaticResource ModulesButton}" Content="{DynamicResource materials_update}" Command="{Binding ViewModel.GoChangeMaterialCommand}"></Button>
+                    <Button HorizontalAlignment="Stretch" Style="{StaticResource ModulesButton}" Content="{DynamicResource materials_remove}" Command="{Binding ViewModel.RemoveMaterialCommand}"></Button>
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>

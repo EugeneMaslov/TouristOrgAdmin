@@ -76,6 +76,16 @@
     <v:String x:Key="employee_notRole">пасада выдалена</v:String>
     <v:String x:Key="employee_remove_quest">Вы сапраўды жадаеце выдаліць супрацоўніка?</v:String>
     <v:String x:Key="employee_remove_text">Выдаленне супрацоўніка</v:String>
+    <v:String x:Key="accountant_materials">Матэрыялы</v:String>
+    <v:String x:Key="accountant_taxes">Падаткі</v:String>
+    <v:String x:Key="accountant_fixed_sources">Асноўныя сродкі</v:String>
+    <v:String x:Key="materials_add">Дадаць новы матэрыял</v:String>
+    <v:String x:Key="materials_update">Змяніць матэрыял</v:String>
+    <v:String x:Key="materials_remove">Выдаліць матэрыял</v:String>
+    <v:String x:Key="materials_remove_quest">Вы сапраўды жадаеце выдаліць матэрыял?</v:String>
+    <v:String x:Key="materials_remove_text">Выдаленне матэрыялу</v:String>
+    <v:String x:Key="materials_price">Кошт:</v:String>
+    <v:String x:Key="materials_count">Колькасць:</v:String>
 
 </ResourceDictionary>
     

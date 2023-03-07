@@ -61,7 +61,7 @@
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Visibility="{Binding ViewModel.AdminAccount.IsAccountantV}">
                     <Image Source="/Images/accountant-icon.png" MaxWidth="60"></Image>
-                    <Button Style="{StaticResource ModulesButton}" Content="{DynamicResource module_accountant}" IsEnabled="{Binding ViewModel.AdminAccount.IsAccountant}" MinWidth="160"></Button>
+                    <Button Style="{StaticResource ModulesButton}" Content="{DynamicResource module_accountant}" Command="{Binding ViewModel.AccountantModuleCommand}" IsEnabled="{Binding ViewModel.AdminAccount.IsAccountant}" MinWidth="160"></Button>
                 </StackPanel>
             </StackPanel>
         </Grid>

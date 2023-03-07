@@ -13,6 +13,8 @@ using TouristOrgAdmin.Controllers;
 using TouristOrgAdmin.Views.Manager;
 using TouristOrgAdmin.Views.Manager.Status;
 using TouristOrgAdmin.Views.Manager.Role;
+using TouristOrgAdmin.Views.Accountant;
+using TouristOrgAdmin.Views.Accountant.Materials;
 
 namespace TouristOrgAdmin.ViewModels
 {
@@ -35,6 +37,12 @@ namespace TouristOrgAdmin.ViewModels
         private Statuses tempStatus;
         private Roles selectedRole;
         private Roles tempRole;
+        private Material selectedMaterial;
+        private Material tempMaterial;
+        private Tax selectedTax;
+        private Tax tempTax;
+        private FixedSource selectedFixedSource;
+        private FixedSource tempFixedSource;
         private bool isTrue = true;
         private bool isFalse = true;
         private bool isFar = true;
@@ -42,8 +50,11 @@ namespace TouristOrgAdmin.ViewModels
         #region Properties
         public ObservableCollection<Communications> Communications { get; set; }
         public ObservableCollection<Employees> Employees { get; set; }
-        public ObservableCollection<Statuses> Statuses { get; set; } 
+        public ObservableCollection<Statuses> Statuses { get; set; }
         public ObservableCollection<Roles> Roles { get; set; }
+        public ObservableCollection<Material> Materials { get; set; }
+        public ObservableCollection<Tax> Taxes { get; set; }
+        public ObservableCollection<FixedSource> FixedSources { get; set; }
         public AdminAccount TempAdminAccount { get; set; }
         public RelayCommand LoginCommand { protected set; get; }
         public RelayCommand RegisterCommand { protected set; get; }
@@ -84,9 +95,18 @@ namespace TouristOrgAdmin.ViewModels
         public RelayCommand EndAddingManagerCommand { protected set; get; }
         public RelayCommand GoChangeManagerCommand { protected set; get; }
         public RelayCommand RemoveManagerCommand { protected set; get; }
+        public RelayCommand AccountantModuleCommand { protected set; get; }
+        public RelayCommand GoMaterialsCommand { protected set; get; }
+        public RelayCommand SelectMaterialCommand { protected set; get; }
+        public RelayCommand BackToAccountantCommand { protected set; get; }
+        public RelayCommand GoAddingMaterialsCommand { protected set; get; }
+        public RelayCommand CancelAddingMaterialsCommand { protected set; get; }
+        public RelayCommand EndAddingMaterialsCommand { protected set; get; }
+        public RelayCommand GoChangeMaterialCommand { protected set; get; }
+        public RelayCommand RemoveMaterialCommand { protected set; get; }
         public string TempString { get; set; }
         public string Like { get; set; } = "";
-        
+
         public bool IsTrue
         {
             get => isTrue;
@@ -220,6 +240,66 @@ namespace TouristOrgAdmin.ViewModels
             }
         }
 
+        public Material SelectedMaterial
+        {
+            get => selectedMaterial;
+            set
+            {
+                selectedMaterial = value;
+                OnPropertyChanged("SelectedMaterial");
+            }
+        }
+
+        public Material TempMaterial
+        {
+            get => tempMaterial;
+            set
+            {
+                tempMaterial = value;
+                OnPropertyChanged("TempMaterial");
+            }
+        }
+
+        public Tax SelectedTax
+        {
+            get => selectedTax;
+            set
+            {
+                selectedTax = value;
+                OnPropertyChanged("SelectedTax");
+            }
+        }
+
+        public Tax TempTax
+        {
+            get => tempTax;
+            set
+            {
+                tempTax = value;
+                OnPropertyChanged("TempTax");
+            }
+        }
+
+        public FixedSource SelectedFixedSource
+        {
+            get => selectedFixedSource;
+            set
+            {
+                selectedFixedSource = value;
+                OnPropertyChanged("SelectedFixedSource");
+            }
+        }
+
+        public FixedSource TempFixedSource
+        {
+            get => tempFixedSource;
+            set
+            {
+                tempFixedSource = value;
+                OnPropertyChanged("TempFixedSource");
+            }
+        }
+
         public bool IsErrorOnLogin
         {
             get => isErrorOnLogin;
@@ -322,12 +402,24 @@ namespace TouristOrgAdmin.ViewModels
             EndAddingManagerCommand = new RelayCommand(_ => EndAddingManager());
             GoChangeManagerCommand = new RelayCommand(_ => GoChangingManager());
             RemoveManagerCommand = new RelayCommand(_ => RemoveManager());
+            AccountantModuleCommand = new RelayCommand(_ => GoAccountantModule());
+            GoMaterialsCommand = new RelayCommand(_ => GoMaterials());
+            SelectMaterialCommand = new RelayCommand(_ => SelectMaterials());
+            BackToAccountantCommand = new RelayCommand(_ => BackToAccountant());
+            GoAddingMaterialsCommand = new RelayCommand(_ => GoAddingMaterials());
+            CancelAddingMaterialsCommand = new RelayCommand(_ => CancelAddingMaterials());
+            EndAddingMaterialsCommand = new RelayCommand(_ => EndAddingMaterials());
+            GoChangeMaterialCommand = new RelayCommand(_ => GoChangeMaterial());
+            RemoveMaterialCommand = new RelayCommand(_ => RemoveMaterial());
             AdminAccount = AdminAccount.GetInstance();
             TempAdminAccount = new AdminAccount();
             Communications = new ObservableCollection<Communications>();
             Employees = new ObservableCollection<Employees>();
             Statuses = new ObservableCollection<Statuses>();
             Roles = new ObservableCollection<Roles>();
+            Materials = new ObservableCollection<Material>();
+            Taxes = new ObservableCollection<Tax>();
+            FixedSources = new ObservableCollection<FixedSource>();
         }
         #endregion
         #region Login&Register
@@ -977,6 +1069,126 @@ namespace TouristOrgAdmin.ViewModels
             }
         }
         #endregion
+        #endregion
+        #region ModuleAccountant
+        private void GoAccountantModule()
+        {
+            MainWindow.StaticNavigate(AccountantControl.GetInstance(this), this);
+            SubContentPath = AccountantObserverControl.GetInstance(this);
+        }
+
+        private void BackToAccountant()
+        {
+            AccountantControl.StaticNavigate(AccountantObserverControl.GetInstance(this), this);
+        }
+
+        private void GoMaterials()
+        {
+            AccountantControl.StaticNavigate(MaterialsObserverControl.GetInstance(this), this);
+        }
+
+        public void SelectMaterials()
+        {
+            if (Like != null)
+            {
+                if (Materials != null)
+                {
+                    Materials.Clear();
+                    while (Materials.Any())
+                    {
+                        Materials.RemoveAt(Materials.Count - 1);
+                    }
+                }
+
+                IEnumerable<Material> materials = null;
+
+                if (Like == "")
+                {
+                    materials = DB.Materials.ToList();
+                }
+                else
+                {
+                    materials = DB.Materials.Where(x => x.MaterialName.Contains(Like));
+                }
+
+                foreach (Material item in materials)
+                {
+                    if (!Materials.Contains(item))
+                    {
+                        Materials.Add(item);
+                    }
+                }
+            }
+        }
+
+        private void GoAddingMaterials()
+        {
+            AccountantControl.StaticNavigate(MaterialsAddingControl.GetInstance(this), this);
+            TempMaterial = new Material();
+        }
+        private void CancelAddingMaterials()
+        {
+            AccountantControl.StaticNavigate(MaterialsObserverControl.GetInstance(this), this);
+            TempMaterial = null;
+            SelectMaterials();
+        }
+
+        private void EndAddingMaterials()
+        {
+            try
+            {
+                if (tempMaterial != null && tempMaterial.MaterialName != "" && tempMaterial.MaterialName != null)
+                {
+                    if (!DB.Materials.Where(x => x.MaterialID == tempMaterial.MaterialID).Any())
+                    {
+                        tempMaterial.MaterialID = 0;
+                        DB.Materials.Add(tempMaterial);
+                    }
+                    else
+                    {
+                        SelectedMaterial.MaterialName = TempMaterial.MaterialName;
+                        SelectedMaterial.Price = TempMaterial.Price;
+                        SelectedMaterial.Count = TempMaterial.Count;
+                        DB.Entry(SelectedMaterial).State = EntityState.Modified;
+                    }
+                    DB.SaveChanges();
+                    SelectedMaterial = null;
+                    TempMaterial = null;
+                    CancelAddingMaterials();
+                }
+                else
+                {
+                    IsSettingsError = true;
+                }
+            }
+            catch (Exception)
+            {
+                IsSettingsError = true;
+            }
+        }
+
+        private void GoChangeMaterial()
+        {
+            if (SelectedMaterial != null)
+            {
+                TempMaterial = SelectedMaterial.Clone() as Material;
+                AccountantControl.StaticNavigate(MaterialsAddingControl.GetInstance(this), this);
+            }
+        }
+
+        private void RemoveMaterial()
+        {
+            if (SelectedMaterial != null)
+            {
+                if (MessageBox.Show((string)Application.Current.Resources["materials_remove_quest"], (string)Application.Current.Resources["materials_remove_text"], MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                {
+                    DB.Materials.Remove(SelectedMaterial);
+                    DB.SaveChanges();
+                    SelectedMaterial = null;
+                    SelectMaterials();
+                }
+            }
+        }
         #endregion
     }
 }

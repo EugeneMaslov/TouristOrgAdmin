@@ -76,5 +76,15 @@
     <v:String x:Key="employee_notRole">role removed</v:String>
     <v:String x:Key="employee_remove_quest">Are you serious about deleting a employee?</v:String>
     <v:String x:Key="employee_remove_text">Removing employee</v:String>
+    <v:String x:Key="accountant_materials">Materials</v:String>
+    <v:String x:Key="accountant_taxes">Taxes</v:String>
+    <v:String x:Key="accountant_fixed_sources">Fixed sources</v:String>
+    <v:String x:Key="materials_add">Add new material</v:String>
+    <v:String x:Key="materials_update">Change material</v:String>
+    <v:String x:Key="materials_remove">Remove material</v:String>
+    <v:String x:Key="materials_remove_quest">Are you serious about deleting a material?</v:String>
+    <v:String x:Key="materials_remove_text">Removing material</v:String>
+    <v:String x:Key="materials_price">Price:</v:String>
+    <v:String x:Key="materials_count">Count:</v:String>
 
 </ResourceDictionary>

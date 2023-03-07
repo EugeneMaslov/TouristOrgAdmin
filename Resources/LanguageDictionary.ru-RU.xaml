@@ -76,5 +76,15 @@
     <v:String x:Key="employee_notRole">должность удалена</v:String>
     <v:String x:Key="employee_remove_quest">Вы действительно желаете удалить сотрудника?</v:String>
     <v:String x:Key="employee_remove_text">Удаление сотрудника</v:String>
+    <v:String x:Key="accountant_materials">Материалы</v:String>
+    <v:String x:Key="accountant_taxes">Налоги</v:String>
+    <v:String x:Key="accountant_fixed_sources">Основные средства</v:String>
+    <v:String x:Key="materials_add">Добавить новый материал</v:String>
+    <v:String x:Key="materials_update">Изменить материал</v:String>
+    <v:String x:Key="materials_remove">Удалить материал</v:String>
+    <v:String x:Key="materials_remove_quest">Вы действительно желаете удалить материал?</v:String>
+    <v:String x:Key="materials_remove_text">Удаление материала</v:String>
+    <v:String x:Key="materials_price">Цена:</v:String>
+    <v:String x:Key="materials_count">Количество:</v:String>
 
 </ResourceDictionary>

@@ -13,6 +13,9 @@ namespace TouristOrgAdmin.Controllers
         public DbSet<Employees> Employees { get; set; } = null!;
         public DbSet<Statuses> Statuses { get; set; } = null!;
         public DbSet<Roles> Roles { get; set; } = null!;
+        public DbSet<Tax> Taxes { get; set; } = null!;
+        public DbSet<Material> Materials { get; set; } = null!;
+        public DbSet<FixedSource> FixedSources { get; set; } = null!;
 
         public TouristCompanyContext()
         {
