@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
+using System.Windows;
 using TouristOrgAdmin.Core;
 
 namespace TouristOrgAdmin.Models
 {
-    public class Employees : PropertyObject
+    public class Employees : PropertyObject, ICloneable
     {
         private int empId;
         private string fullName;
@@ -37,6 +38,7 @@ namespace TouristOrgAdmin.Models
                 {
                     fullName = value;
                     OnPropertyChanged("FullName");
+                    OnPropertyChanged("EmpToString");
                 }
             }
         }
@@ -72,7 +74,7 @@ namespace TouristOrgAdmin.Models
             get => password;
             set
             {
-                if (value != "")
+                if (value != "" && value != null)
                 {
                     password = AdminAccount.ConvertToSHA256(value);
                     OnPropertyChanged("Password");
@@ -84,5 +86,40 @@ namespace TouristOrgAdmin.Models
         public Roles Role { get; set; }
         public int? StatusID { get; set; }
         public Statuses Status { get; set; }
+
+        public string EmpToString => ToString();
+
+        public Employees()
+        {
+            empId = -1;
+        }
+
+        public Employees(int empId, string fullName, DateTime birthDate, DateTime empDate, string password)
+        {
+            EmpID = empId;
+            FullName = fullName;
+            BirthDate = birthDate;
+            EmpDate = empDate;
+            Password = password;
+        }
+
+        public object Clone()
+        {
+            Employees result = new Employees(EmpID, FullName, BirthDate, EmpDate, Password);
+            result.RoleID = RoleID;
+            result.Role = Role;
+            result.StatusID = StatusID;
+            result.Status = Status;
+            return result;
+        }
+
+        public override string ToString()
+        {
+            if (Role != null)
+            {
+                return FullName + ", " + Role.RoleName;
+            }
+            return FullName + ", " + Application.Current.Resources["employee_notRole"];
+        }
     }
 }

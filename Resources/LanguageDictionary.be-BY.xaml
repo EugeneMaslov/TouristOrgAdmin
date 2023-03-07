@@ -67,6 +67,15 @@
     <v:String x:Key="roles_remove_quest">Вы сапраўды жадаеце выдаліць ролю?</v:String>
     <v:String x:Key="roles_remove_text">Выдаленне ролі</v:String>
     <v:String x:Key="roles_rate">Стаўка:</v:String>
+    <v:String x:Key="employee_fullname">Поўнае імя:</v:String>
+    <v:String x:Key="employee_password">Пароль:</v:String>
+    <v:String x:Key="employee_birthdate">Дата нараджэння:</v:String>
+    <v:String x:Key="employee_empdate">Дата прылады:</v:String>
+    <v:String x:Key="employee_role">Пасада:</v:String>
+    <v:String x:Key="employee_status">Статус:</v:String>
+    <v:String x:Key="employee_notRole">пасада выдалена</v:String>
+    <v:String x:Key="employee_remove_quest">Вы сапраўды жадаеце выдаліць супрацоўніка?</v:String>
+    <v:String x:Key="employee_remove_text">Выдаленне супрацоўніка</v:String>
 
 </ResourceDictionary>
     

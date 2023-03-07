@@ -79,6 +79,11 @@ namespace TouristOrgAdmin.ViewModels
         public RelayCommand EndAddingRoleCommnad { protected set; get; }
         public RelayCommand GoChangeRoleCommand { protected set; get; }
         public RelayCommand RemoveRoleCommand { protected set; get; }
+        public RelayCommand GoAddingManagerCommand { protected set; get; }
+        public RelayCommand CancelAddingManagerCommand { protected set; get; }
+        public RelayCommand EndAddingManagerCommand { protected set; get; }
+        public RelayCommand GoChangeManagerCommand { protected set; get; }
+        public RelayCommand RemoveManagerCommand { protected set; get; }
         public string TempString { get; set; }
         public string Like { get; set; } = "";
         
@@ -312,6 +317,11 @@ namespace TouristOrgAdmin.ViewModels
             EndAddingRoleCommnad = new RelayCommand(_ => EndAddingRole());
             GoChangeRoleCommand = new RelayCommand(_ => GoChangingRoles());
             RemoveRoleCommand = new RelayCommand(_ => RemoveRole());
+            GoAddingManagerCommand = new RelayCommand(_ => GoAddingManager());
+            CancelAddingManagerCommand = new RelayCommand(_ => CancelAddingManager());
+            EndAddingManagerCommand = new RelayCommand(_ => EndAddingManager());
+            GoChangeManagerCommand = new RelayCommand(_ => GoChangingManager());
+            RemoveManagerCommand = new RelayCommand(_ => RemoveManager());
             AdminAccount = AdminAccount.GetInstance();
             TempAdminAccount = new AdminAccount();
             Communications = new ObservableCollection<Communications>();
@@ -351,11 +361,15 @@ namespace TouristOrgAdmin.ViewModels
             {
                 if (AdminAccount.Login != ""  && AdminAccount.Login != null)
                 {
-                    if (AdminAccount.Password != "" && AdminAccount.Password != null)
+                    if (TempString != "" && TempString != null)
                     {
-                        DB.AdminAccount.Add(AdminAccount);
-                        DB.SaveChanges();
-                        MainWindow.StaticNavigate(AdminPanel.GetInstance(this), this);
+                        AdminAccount.Password = TempString;
+                        if (AdminAccount.Password != null && AdminAccount.Password != "")
+                        {
+                            DB.AdminAccount.Add(AdminAccount);
+                            DB.SaveChanges();
+                            MainWindow.StaticNavigate(AdminPanel.GetInstance(this), this);
+                        }
                     }
                     else
                     {
@@ -622,6 +636,8 @@ namespace TouristOrgAdmin.ViewModels
         {
             MainWindow.StaticNavigate(ManagerControl.GetInstance(this), this);
             SubContentPath = ManagerObserverControl.GetInstance(this);
+            SelectStatus();
+            SelectRoles();
         }
         public void SelectEmployee()
         {
@@ -653,6 +669,97 @@ namespace TouristOrgAdmin.ViewModels
                     {
                         Employees.Add(item);
                     }
+                }
+            }
+        }
+
+        private void GoAddingManager()
+        {
+            ManagerControl.StaticNavigate(ManagerAddingControl.GetInstance(this), this);
+            TempEmployee = new Employees(-1, "", DateTime.Now, DateTime.Now, null);
+            SelectStatus();
+            SelectRoles();
+            SelectedRole = null;
+            SelectedStatus = null;
+        }
+
+        private void CancelAddingManager()
+        {
+            ManagerControl.StaticNavigate(ManagerObserverControl.GetInstance(this), this);
+            TempEmployee = null;
+            TempString = "";
+            SelectEmployee();
+        }
+
+        private void EndAddingManager()
+        {
+
+            if (SelectedRole != null)
+            {
+                tempEmployee.Role = SelectedRole;
+                tempEmployee.RoleID = SelectedRole.RoleID;
+            }
+            if (SelectedStatus != null)
+            {
+                tempEmployee.Status = SelectedStatus;
+                tempEmployee.StatusID = SelectedStatus.StatusID;
+            }
+            if (TempString != "" && TempString != null)
+            {
+                tempEmployee.Password = TempString;
+            }
+            if (tempEmployee.FullName != null && tempEmployee.FullName != "" && tempEmployee.Password != null && tempEmployee.Password != "" && tempEmployee.Role != null && tempEmployee.Status != null)
+            {
+                if (!DB.Employees.Where(x => x.EmpID == tempEmployee.EmpID).Any())
+                {
+                    tempEmployee.EmpID = 0;
+                    DB.Employees.Add(tempEmployee);
+                }
+                else
+                {
+                    SelectedEmployee.FullName = TempEmployee.FullName;
+                    if (TempString != "" && TempString != null)
+                    {
+                        SelectedEmployee.Password = TempString;
+                    }
+                    SelectedEmployee.BirthDate = TempEmployee.BirthDate;
+                    SelectedEmployee.EmpDate = TempEmployee.EmpDate;
+                    SelectedEmployee.Role = TempEmployee.Role;
+                    SelectedEmployee.RoleID = TempEmployee.RoleID;
+                    SelectedEmployee.Status = TempEmployee.Status;
+                    SelectedEmployee.StatusID = TempEmployee.StatusID;
+                    DB.Entry(SelectedEmployee).State = EntityState.Modified;
+                }
+                DB.SaveChanges();
+                SelectedEmployee = null;
+                TempEmployee = null;
+                CancelAddingManager();
+            }
+            else
+            {
+                IsSettingsError = true;
+            }
+        }
+
+        private void GoChangingManager()
+        {
+            if (SelectedEmployee != null)
+            {
+                TempEmployee = SelectedEmployee.Clone() as Employees;
+                TempString = "";
+                ManagerControl.StaticNavigate(ManagerAddingControl.GetInstance(this), this);
+            }
+        }
+        private void RemoveManager()
+        {
+            if (SelectedEmployee != null)
+            {
+                if (MessageBox.Show((string)Application.Current.Resources["employee_remove_quest"], (string)Application.Current.Resources["employee_remove_text"], MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                {
+                    DB.Employees.Remove(SelectedEmployee);
+                    DB.SaveChanges();
+                    SelectedEmployee = null;
+                    SelectEmployee();
                 }
             }
         }

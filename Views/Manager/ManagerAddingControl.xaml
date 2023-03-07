@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:TouristOrgAdmin.Views.Manager" xmlns:viewmodels="clr-namespace:TouristOrgAdmin.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:TouristOrganizationViewModel}"
              mc:Ignorable="d" 
+             xmlns:w="clr-namespace:TouristOrgAdmin.Core"
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Grid.Background>
@@ -38,35 +39,64 @@
                     <TextBlock Style="{StaticResource MainText}" Margin="0" Text="{DynamicResource employee_add}" FontSize="15"></TextBlock>
                 </StackPanel>
                 <StackPanel Orientation="Vertical" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Stretch">
-                    <Button Style="{StaticResource ModulesButton}" Content="{DynamicResource cancel_text}" Command="{Binding ViewModel.CancelCommunicationCommand}" Margin="0, 0, 5, 0" HorizontalAlignment="Stretch"></Button>
+                    <Button Style="{StaticResource ModulesButton}" Content="{DynamicResource cancel_text}" Command="{Binding ViewModel.CancelAddingManagerCommand}" Margin="0, 0, 5, 0" HorizontalAlignment="Stretch"></Button>
                 </StackPanel>
                 <StackPanel Orientation="Vertical" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Stretch">
-                    <Button Style="{StaticResource ModulesButton}" Content="{DynamicResource accept_text}" Command="{Binding ViewModel.EndAddingCommunicationCommand}" Margin="5, 0, 0, 0" HorizontalAlignment="Stretch"></Button>
+                    <Button Style="{StaticResource ModulesButton}" Content="{DynamicResource accept_text}" Command="{Binding ViewModel.EndAddingManagerCommand}" Margin="5, 0, 0, 0" HorizontalAlignment="Stretch"></Button>
                 </StackPanel>
                 <Grid Grid.Row="1" Grid.Column="0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"></ColumnDefinition>
-                        <ColumnDefinition Width="2*"></ColumnDefinition>
+                        <ColumnDefinition Width="1.9*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <StackPanel Orientation="Vertical">
-                        <TextBlock Style="{StaticResource LoginText}" HorizontalAlignment="Left"  FontSize="20" Margin="10, 0, 10, 10" Text="{DynamicResource unp_text}"/>
-                        <TextBlock Style="{StaticResource LoginText}" HorizontalAlignment="Left" FontSize="20" Margin="10, 0, 10, 10" Text="{DynamicResource name_com_text}"></TextBlock>
-                        <TextBlock Style="{StaticResource LoginText}" HorizontalAlignment="Left" FontSize="12" Margin="10, 5, 10, 10"  Text="{DynamicResource date_start_text}"></TextBlock>
-                        <TextBlock Style="{StaticResource LoginText}" HorizontalAlignment="Left" FontSize="12" Margin="10, 30, 10, 0" Text="{DynamicResource date_end_text}"></TextBlock>
+                        <TextBlock Style="{StaticResource LoginText}" HorizontalAlignment="Left"  FontSize="12" Margin="10, 0, 10, 10" Text="{DynamicResource employee_fullname}"/>
+                        <TextBlock Style="{StaticResource LoginText}" HorizontalAlignment="Left" FontSize="12" Margin="10, 15, 10, 10" Text="{DynamicResource employee_password}"></TextBlock>
+                        <TextBlock Style="{StaticResource LoginText}" HorizontalAlignment="Left" FontSize="12" Margin="10, 15, 10, 10"  Text="{DynamicResource employee_birthdate}"></TextBlock>
+                        <TextBlock Style="{StaticResource LoginText}" HorizontalAlignment="Left" FontSize="12" Margin="10, 30, 10, 0" Text="{DynamicResource employee_empdate}"></TextBlock>
                     </StackPanel>
                     <StackPanel Grid.Column="1">
-                        <TextBox Style="{StaticResource LoginTextBox}" HorizontalContentAlignment="Left" Margin="5" Padding="0" FontSize="20" Text="{Binding ViewModel.TempEmployee.FullName, Mode=TwoWay}" MaxLength="9"></TextBox>
-                        <TextBox Style="{StaticResource LoginTextBox}" HorizontalContentAlignment="Left" Margin="5" Padding="0" FontSize="20" Text="{Binding ViewModel.TempEmployee.Password, Mode=TwoWay}"></TextBox>
+                        <TextBox Style="{StaticResource LoginTextBox}" HorizontalContentAlignment="Left" Margin="5" Padding="0" FontSize="20" Text="{Binding ViewModel.TempEmployee.FullName, Mode=TwoWay}"></TextBox>
+                        <PasswordBox Style="{StaticResource PasswordTextBox}" HorizontalContentAlignment="Left" Margin="5" Padding="0" FontSize="20" w:PasswordHelper.Attach="True" w:PasswordHelper.Password="{Binding ViewModel.TempString, Mode=TwoWay}"></PasswordBox>
                         <DatePicker Style="{StaticResource DatePickerBox}" Margin="5" Padding="0" FontSize="20" SelectedDate="{Binding ViewModel.TempEmployee.BirthDate, Mode=TwoWay, StringFormat=dd.MM.yyyy}"></DatePicker>
                         <DatePicker Style="{StaticResource DatePickerBox}" Margin="5" Padding="0" FontSize="20" SelectedDate="{Binding ViewModel.TempEmployee.EmpDate, Mode=TwoWay, StringFormat=dd.MM.yyyy}"></DatePicker>
                     </StackPanel>
                 </Grid>
                 <Grid Grid.Row="1" Grid.Column="1">
-                    <StackPanel>
-                        <StackPanel>
-                            <TextBlock Text="{Binding ViewModel.ErrorText}" Style="{StaticResource LoginText}" VerticalAlignment="Bottom"></TextBlock>
-                        </StackPanel>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="1.9*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Style="{StaticResource LoginText}" HorizontalAlignment="Left"  FontSize="12" Margin="10, 0, 10, 10" Text="{DynamicResource employee_role}"/>
+                        <TextBlock Style="{StaticResource LoginText}" HorizontalAlignment="Left" FontSize="12" Margin="10, 15, 10, 10" Text="{DynamicResource employee_status}"></TextBlock>
                     </StackPanel>
+                    <StackPanel Grid.Column="1">
+                        <ComboBox Name="comboStatus"
+                                  ItemsSource="{Binding ViewModel.Roles}"
+                                  SelectedItem="{Binding ViewModel.SelectedRole}">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Style="{StaticResource LoginText}" Text="{Binding  Path=RoleName}" Margin="0"></TextBlock>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                        <ComboBox Name="comboRole" 
+                                  ItemsSource="{Binding ViewModel.Statuses}"
+                                  Margin="0, 20, 0, 0"
+                                  SelectedItem="{Binding ViewModel.SelectedStatus}">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Style="{StaticResource LoginText}" Text="{Binding  Path=StatusName}" Margin="0"></TextBlock>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                    </StackPanel>
+                    <TextBlock Grid.Column="1" Text="{Binding ViewModel.ErrorText}" Style="{StaticResource LoginText}" VerticalAlignment="Bottom"></TextBlock>
                 </Grid>
             </Grid>
         </Grid>

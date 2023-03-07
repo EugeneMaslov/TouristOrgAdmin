@@ -67,5 +67,14 @@
     <v:String x:Key="roles_remove_quest">Вы действительно хотите удалить роль?</v:String>
     <v:String x:Key="roles_remove_text">Удаление роли</v:String>
     <v:String x:Key="roles_rate">Ставка:</v:String>
+    <v:String x:Key="employee_fullname">Полное имя:</v:String>
+    <v:String x:Key="employee_password">Пароль:</v:String>
+    <v:String x:Key="employee_birthdate">Дата рождения:</v:String>
+    <v:String x:Key="employee_empdate">Дата устройства:</v:String>
+    <v:String x:Key="employee_role">Должность:</v:String>
+    <v:String x:Key="employee_status">Статус:</v:String>
+    <v:String x:Key="employee_notRole">должность удалена</v:String>
+    <v:String x:Key="employee_remove_quest">Вы действительно желаете удалить сотрудника?</v:String>
+    <v:String x:Key="employee_remove_text">Удаление сотрудника</v:String>
 
 </ResourceDictionary>

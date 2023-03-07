@@ -67,5 +67,14 @@
     <v:String x:Key="roles_remove_quest">Are you serious about deleting a role?</v:String>
     <v:String x:Key="roles_remove_text">Removing role</v:String>
     <v:String x:Key="roles_rate">Rate:</v:String>
+    <v:String x:Key="employee_fullname">Fullname:</v:String>
+    <v:String x:Key="employee_password">Password:</v:String>
+    <v:String x:Key="employee_birthdate">Birth date:</v:String>
+    <v:String x:Key="employee_empdate">Date of employment:</v:String>
+    <v:String x:Key="employee_role">Role:</v:String>
+    <v:String x:Key="employee_status">Status:</v:String>
+    <v:String x:Key="employee_notRole">role removed</v:String>
+    <v:String x:Key="employee_remove_quest">Are you serious about deleting a employee?</v:String>
+    <v:String x:Key="employee_remove_text">Removing employee</v:String>
 
 </ResourceDictionary>

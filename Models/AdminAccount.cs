@@ -36,7 +36,7 @@ namespace TouristOrgAdmin.Models
             get => password;
             set
             {
-                if (value != "")
+                if (value != "" && value != null)
                 {
                     password = ConvertToSHA256(value);
                     OnPropertyChanged("Password");
@@ -140,14 +140,18 @@ namespace TouristOrgAdmin.Models
 
         public static string ConvertToSHA256(string randomString)
         {
-            var crypt = new SHA256Managed();
-            var hash = new StringBuilder();
-            byte[] crypto = crypt.ComputeHash(Encoding.UTF8.GetBytes(randomString));
-            foreach (byte theByte in crypto)
+            if (randomString != null && randomString != "")
             {
-                hash.Append(theByte.ToString("x2"));
+                var crypt = new SHA256Managed();
+                var hash = new StringBuilder();
+                byte[] crypto = crypt.ComputeHash(Encoding.UTF8.GetBytes(randomString));
+                foreach (byte theByte in crypto)
+                {
+                    hash.Append(theByte.ToString("x2"));
+                }
+                return hash.ToString();
             }
-            return hash.ToString();
+            return null;
         }
 
         public override string ToString()

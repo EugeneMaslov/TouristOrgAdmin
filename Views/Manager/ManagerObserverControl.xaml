@@ -51,7 +51,7 @@
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Style="{StaticResource LoginText}" Text="{Binding  Path=FullName}" Margin="0"></TextBlock>
+                                <TextBlock Style="{StaticResource LoginText}" Text="{Binding  Path=EmpToString}" Margin="0"></TextBlock>
                             </StackPanel>
                         </DataTemplate>
                     </ListView.ItemTemplate>
@@ -59,9 +59,9 @@
             </Grid>
             <Grid Grid.Column="1">
                 <StackPanel VerticalAlignment="Top">
-                    <Button HorizontalAlignment="Stretch" Style="{StaticResource ModulesButton}" Content="{DynamicResource employee_add}" Command=""></Button>
-                    <Button HorizontalAlignment="Stretch" Style="{StaticResource ModulesButton}" Content="{DynamicResource employee_update}" Command=""></Button>
-                    <Button HorizontalAlignment="Stretch" Style="{StaticResource ModulesButton}" Content="{DynamicResource employee_remove}" Command=""></Button>
+                    <Button HorizontalAlignment="Stretch" Style="{StaticResource ModulesButton}" Content="{DynamicResource employee_add}" Command="{Binding ViewModel.GoAddingManagerCommand}"></Button>
+                    <Button HorizontalAlignment="Stretch" Style="{StaticResource ModulesButton}" Content="{DynamicResource employee_update}" Command="{Binding ViewModel.GoChangeManagerCommand}"></Button>
+                    <Button HorizontalAlignment="Stretch" Style="{StaticResource ModulesButton}" Content="{DynamicResource employee_remove}" Command="{Binding ViewModel.RemoveManagerCommand}"></Button>
                     <Button HorizontalAlignment="Stretch" Style="{StaticResource ModulesButton}" Content="{DynamicResource status_text}" Command="{Binding ViewModel.GoStatusCommand}"></Button>
                     <Button HorizontalAlignment="Stretch" Style="{StaticResource ModulesButton}" Content="{DynamicResource roles_text}" Command="{Binding ViewModel.GoRolesCommand}"></Button>
                 </StackPanel>

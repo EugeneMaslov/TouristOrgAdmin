@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:TouristOrgAdmin.Views" xmlns:viewmodels="clr-namespace:TouristOrgAdmin.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:TouristOrganizationViewModel}"
              mc:Ignorable="d" 
+             xmlns:w="clr-namespace:TouristOrgAdmin.Core"
              d:DesignHeight="450" d:DesignWidth="800" KeyDown="UserControl_KeyDown">
     <Grid>
         <Grid.ColumnDefinitions>
@@ -36,7 +37,7 @@
                 <TextBlock Style="{StaticResource LoginText}" Margin="20, 0, 0, 0" Text="{DynamicResource register_text}" HorizontalAlignment="Left"></TextBlock>
                 <TextBox Text="{Binding ViewModel.AdminAccount.Login, Mode=TwoWay}" Style="{DynamicResource LoginTextBox}"/>
                 <TextBlock Style="{StaticResource LoginText}" Margin="20, 0, 0, 0" Text="{DynamicResource password_text_register}" HorizontalAlignment="Left"></TextBlock>
-                <TextBox Text="{Binding ViewModel.AdminAccount.Password, Mode=OneWayToSource}" Style="{StaticResource LoginTextBox}"/>
+                <PasswordBox w:PasswordHelper.Attach="True" w:PasswordHelper.Password="{Binding ViewModel.TempString, Mode=TwoWay}" Style="{StaticResource PasswordTextBox}"/>
                 <StackPanel Orientation="Horizontal" Margin="20, 0, 0, 0">
                     <CheckBox Style="{StaticResource CircleCheckboxFL}" Width="20" Height="20" IsChecked="{Binding ViewModel.AdminAccount.IsManager, Mode=TwoWay}"></CheckBox>
                     <TextBlock Style="{StaticResource LoginText}" Text="{DynamicResource is_manager_checkbox}"></TextBlock>
