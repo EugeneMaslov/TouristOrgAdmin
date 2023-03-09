@@ -15,6 +15,7 @@ using TouristOrgAdmin.Views.Manager.Status;
 using TouristOrgAdmin.Views.Manager.Role;
 using TouristOrgAdmin.Views.Accountant;
 using TouristOrgAdmin.Views.Accountant.Materials;
+using TouristOrgAdmin.Views.Accountant.Taxes;
 
 namespace TouristOrgAdmin.ViewModels
 {
@@ -104,6 +105,13 @@ namespace TouristOrgAdmin.ViewModels
         public RelayCommand EndAddingMaterialsCommand { protected set; get; }
         public RelayCommand GoChangeMaterialCommand { protected set; get; }
         public RelayCommand RemoveMaterialCommand { protected set; get; }
+        public RelayCommand GoTaxesCommand { protected set; get; }
+        public RelayCommand SelectTaxesCommand { protected set; get; }
+        public RelayCommand GoAddingTaxCommand { protected set; get; }
+        public RelayCommand CancelAddingTaxCommand { protected set; get; }
+        public RelayCommand EndAddingTaxCommand { protected set; get; }
+        public RelayCommand GoChangeTaxCommand { protected set; get; }
+        public RelayCommand RemoveTaxCommand { protected set; get; }
         public string TempString { get; set; }
         public string Like { get; set; } = "";
 
@@ -411,6 +419,13 @@ namespace TouristOrgAdmin.ViewModels
             EndAddingMaterialsCommand = new RelayCommand(_ => EndAddingMaterials());
             GoChangeMaterialCommand = new RelayCommand(_ => GoChangeMaterial());
             RemoveMaterialCommand = new RelayCommand(_ => RemoveMaterial());
+            GoTaxesCommand = new RelayCommand(_ => GoTaxes());
+            SelectTaxesCommand = new RelayCommand(_ => SelectTaxes());
+            GoAddingTaxCommand = new RelayCommand(_ => GoAddingTax());
+            CancelAddingTaxCommand = new RelayCommand(_ => CancelAddingTax());
+            EndAddingTaxCommand = new RelayCommand(_ => EndAddingTax());
+            GoChangeTaxCommand = new RelayCommand(_ => GoChangeTax());
+            RemoveTaxCommand = new RelayCommand(_ => RemoveTax());
             AdminAccount = AdminAccount.GetInstance();
             TempAdminAccount = new AdminAccount();
             Communications = new ObservableCollection<Communications>();
@@ -1081,7 +1096,7 @@ namespace TouristOrgAdmin.ViewModels
         {
             AccountantControl.StaticNavigate(AccountantObserverControl.GetInstance(this), this);
         }
-
+        #region Materials
         private void GoMaterials()
         {
             AccountantControl.StaticNavigate(MaterialsObserverControl.GetInstance(this), this);
@@ -1189,6 +1204,118 @@ namespace TouristOrgAdmin.ViewModels
                 }
             }
         }
+        #endregion
+        #region Taxes
+        private void GoTaxes()
+        {
+            AccountantControl.StaticNavigate(TaxesObserverControl.GetInstance(this), this);
+        }
+
+        public void SelectTaxes()
+        {
+            if (Like != null)
+            {
+                if (Taxes != null)
+                {
+                    Taxes.Clear();
+                    while (Taxes.Any())
+                    {
+                        Taxes.RemoveAt(Taxes.Count - 1);
+                    }
+                }
+
+                IEnumerable<Tax> taxes = null;
+
+                if (Like == "")
+                {
+                    taxes = DB.Taxes.ToList();
+                }
+                else
+                {
+                    taxes = DB.Taxes.Where(x => x.NameTax.Contains(Like));
+                }
+
+                foreach (Tax item in taxes)
+                {
+                    if (!Taxes.Contains(item))
+                    {
+                        Taxes.Add(item);
+                    }
+                }
+            }
+        }
+
+        private void GoAddingTax()
+        {
+            AccountantControl.StaticNavigate(TaxesAddingControl.GetInstance(this), this);
+            TempTax = new Tax();
+        }
+
+        private void CancelAddingTax()
+        {
+            AccountantControl.StaticNavigate(TaxesObserverControl.GetInstance(this), this);
+            TempTax = null;
+            SelectTaxes();
+        }
+
+        private void EndAddingTax()
+        {
+            try
+            {
+                if (tempTax != null && tempTax.NameTax != "" && tempTax.NameTax != null)
+                {
+                    if (!DB.Taxes.Where(x => x.TaxID == tempTax.TaxID).Any())
+                    {
+                        tempTax.TaxID = 0;
+                        DB.Taxes.Add(tempTax);
+                    }
+                    else
+                    {
+                        SelectedTax.NameTax = TempTax.NameTax;
+                        SelectedTax.IsFixed = TempTax.IsFixed;
+                        SelectedTax.Percent = TempTax.Percent;
+                        SelectedTax.Price = TempTax.Price;
+                        DB.Entry(SelectedTax).State = EntityState.Modified;
+                    }
+                    DB.SaveChanges();
+                    SelectedTax = null;
+                    TempTax = null;
+                    CancelAddingTax();
+                }
+                else
+                {
+                    IsSettingsError = true;
+                }
+            }
+            catch (Exception)
+            {
+                IsSettingsError = true;
+            }
+        }
+
+        private void GoChangeTax()
+        {
+            if (SelectedTax != null)
+            {
+                TempTax = SelectedTax.Clone() as Tax;
+                AccountantControl.StaticNavigate(TaxesAddingControl.GetInstance(this), this);
+            }
+        }
+
+        private void RemoveTax()
+        {
+            if (SelectedTax != null)
+            {
+                if (MessageBox.Show((string)Application.Current.Resources["taxes_remove_quest"], (string)Application.Current.Resources["taxes_remove_text"], MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                {
+                    DB.Taxes.Remove(SelectedTax);
+                    DB.SaveChanges();
+                    SelectedTax = null;
+                    SelectTaxes();
+                }
+            }
+        }
+        #endregion
         #endregion
     }
 }

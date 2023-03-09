@@ -1,0 +1,78 @@
+﻿<UserControl x:Class="TouristOrgAdmin.Views.Accountant.Taxes.TaxesAddingControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TouristOrgAdmin.Views.Accountant.Taxes" xmlns:viewmodels="clr-namespace:TouristOrgAdmin.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:TouristOrganizationViewModel}"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush StartPoint="0, 0" EndPoint="1, 1">
+                <GradientStop Offset="-0.2" Color="#2271B3"></GradientStop>
+                <GradientStop Offset="1.2" Color="#252850"></GradientStop>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="10"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="10"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Column="1" Grid.Row="1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="30"></RowDefinition>
+                </Grid.RowDefinitions>
+                <StackPanel Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2">
+                    <TextBlock Style="{StaticResource MainText}" Margin="0" Text="{DynamicResource taxes_add}" FontSize="15"></TextBlock>
+                </StackPanel>
+                <StackPanel Orientation="Vertical" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Stretch">
+                    <Button Style="{StaticResource ModulesButton}" Content="{DynamicResource cancel_text}" Command="{Binding ViewModel.CancelAddingTaxCommand}" Margin="0, 0, 5, 0" HorizontalAlignment="Stretch"></Button>
+                </StackPanel>
+                <StackPanel Orientation="Vertical" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Stretch">
+                    <Button Style="{StaticResource ModulesButton}" Content="{DynamicResource accept_text}" Command="{Binding ViewModel.EndAddingTaxCommand}" Margin="5, 0, 0, 0" HorizontalAlignment="Stretch"></Button>
+                </StackPanel>
+                <Grid Grid.Row="1" Grid.Column="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="1.2*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Style="{StaticResource LoginText}" HorizontalAlignment="Left" FontSize="18" Margin="10, 0, 10, 10" Text="{DynamicResource name_com_text}"></TextBlock>
+                        <TextBlock Style="{StaticResource LoginText}" HorizontalAlignment="Left" FontSize="18" Margin="10, 10, 10, 10" Text="{DynamicResource taxes_isfixed_text}" ></TextBlock>
+                        <TextBlock Style="{StaticResource LoginText}" HorizontalAlignment="Left" FontSize="18" Margin="10, 10, 10, 10" Text="{DynamicResource materials_price}" x:Name="frst_text" Visibility="{Binding Path=ViewModel.TempTax.IsFixedV, Mode=TwoWay}"></TextBlock>
+                        <TextBlock Style="{StaticResource LoginText}" HorizontalAlignment="Left" FontSize="18" Margin="10, 10, 10, 10" Text="{DynamicResource taxes_percent}" x:Name="scnd_text" Visibility="{Binding Path=ViewModel.TempTax.IsFixedVReverse, Mode=TwoWay}"></TextBlock>
+                    </StackPanel>
+                    <StackPanel Grid.Column="1">
+                        <TextBox Style="{StaticResource LoginTextBox}" HorizontalContentAlignment="Left" Margin="5" Padding="0" FontSize="20" Text="{Binding ViewModel.TempTax.NameTax, Mode=TwoWay}"></TextBox>
+                        <StackPanel Orientation="Horizontal" Margin="10, 10, 0, 10">
+                            <CheckBox Style="{StaticResource CircleCheckboxFL}" Width="20" Height="20" IsChecked="{Binding ViewModel.TempTax.IsFixed, Mode=TwoWay}" Checked="CheckBox_Checked" Unchecked="CheckBox_Checked"></CheckBox>
+                            <TextBlock Style="{StaticResource LoginText}" Text="{DynamicResource taxes_isfixed_checkbox}"></TextBlock>
+                        </StackPanel>
+                        <TextBox Style="{StaticResource LoginTextBox}" HorizontalContentAlignment="Left" Margin="5" Padding="0" FontSize="20" Text="{Binding ViewModel.TempTax.Price, Mode=TwoWay}" x:Name="frst" Visibility="{Binding Path=ViewModel.TempTax.IsFixedV, Mode=TwoWay}"></TextBox>
+                        <TextBox Style="{StaticResource LoginTextBox}" HorizontalContentAlignment="Left" Margin="5" Padding="0" FontSize="20" Text="{Binding ViewModel.TempTax.Percent, Mode=TwoWay}" x:Name="scnd" Visibility="{Binding Path=ViewModel.TempTax.IsFixedVReverse, Mode=TwoWay}"></TextBox>
+                    </StackPanel>
+                </Grid>
+                <Grid Grid.Row="1" Grid.Column="1">
+                    <StackPanel>
+                        <StackPanel>
+                            <Image Source="/Images/accountant-icon.png" Width="120"></Image>
+                            <TextBlock Text="{Binding ViewModel.ErrorText}" Style="{StaticResource LoginText}" VerticalAlignment="Bottom"></TextBlock>
+                        </StackPanel>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>

@@ -86,5 +86,13 @@
     <v:String x:Key="materials_remove_text">Удаление материала</v:String>
     <v:String x:Key="materials_price">Цена:</v:String>
     <v:String x:Key="materials_count">Количество:</v:String>
+    <v:String x:Key="taxes_add">Добавить новый налог</v:String>
+    <v:String x:Key="taxes_update">Изменить налог</v:String>
+    <v:String x:Key="taxes_remove">Удалить налог</v:String>
+    <v:String x:Key="taxes_remove_quest">Вы действительно желаете удалить налог?</v:String>
+    <v:String x:Key="taxes_remove_text">Удаление налога</v:String>
+    <v:String x:Key="taxes_isfixed_checkbox">Фиксированный налог</v:String>
+    <v:String x:Key="taxes_isfixed_text">Фиксированность:</v:String>
+    <v:String x:Key="taxes_percent">Процент:</v:String>
 
 </ResourceDictionary>

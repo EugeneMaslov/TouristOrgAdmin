@@ -26,7 +26,7 @@
         <Grid Grid.Column="1" Grid.Row="1">
             <StackPanel VerticalAlignment="Center">
                 <Button HorizontalAlignment="Stretch" Style="{StaticResource ModulesButton}" Content="{DynamicResource accountant_materials}" Command="{Binding ViewModel.GoMaterialsCommand}"></Button>
-                <Button HorizontalAlignment="Stretch" Style="{StaticResource ModulesButton}" Content="{DynamicResource accountant_taxes}" Command=""></Button>
+                <Button HorizontalAlignment="Stretch" Style="{StaticResource ModulesButton}" Content="{DynamicResource accountant_taxes}" Command="{Binding ViewModel.GoTaxesCommand}"></Button>
                 <Button HorizontalAlignment="Stretch" Style="{StaticResource ModulesButton}" Content="{DynamicResource accountant_fixed_sources}" Command=""></Button>
             </StackPanel>
         </Grid>

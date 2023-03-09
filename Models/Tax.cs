@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
+using System.Windows;
 using TouristOrgAdmin.Core;
 
 namespace TouristOrgAdmin.Models
@@ -10,7 +11,7 @@ namespace TouristOrgAdmin.Models
     {
         private int taxID;
         private string nameTax;
-        private bool isFixed;
+        private bool isFixed = false;
         private double price;
         private double percent;
 
@@ -20,7 +21,7 @@ namespace TouristOrgAdmin.Models
             get => taxID;
             set
             {
-                if (value > 0)
+                if (value >= 0)
                 {
                     taxID = value;
                     OnPropertyChanged("TaxID");
@@ -35,7 +36,7 @@ namespace TouristOrgAdmin.Models
             {
                 if (value != null && value != "" && value.Length <= 95)
                 {
-                    NameTax = nameTax;
+                    nameTax = value;
                     OnPropertyChanged("NameTax");
                     OnPropertyChanged("TaxString");
                 }
@@ -49,6 +50,9 @@ namespace TouristOrgAdmin.Models
             {
                 isFixed = value;
                 OnPropertyChanged("IsFixed");
+                OnPropertyChanged();
+                OnPropertyChanged("IsFixedV");
+                OnPropertyChanged("IsFixedVReverse");
             }
         }
 
@@ -79,6 +83,39 @@ namespace TouristOrgAdmin.Models
                 }
             }
         }
+
+        public Visibility IsFixedV
+        {
+            get
+            {
+                if (isFixed)
+                {
+                    return Visibility.Visible;
+                }
+                return Visibility.Collapsed;
+            }
+            set
+            {
+                OnPropertyChanged("IsFixedV");
+            }
+        }
+
+        public Visibility IsFixedVReverse
+        {
+            get
+            {
+                if (!isFixed)
+                {
+                    return Visibility.Visible;
+                }
+                return Visibility.Collapsed;
+            }
+            set
+            {
+                OnPropertyChanged("IsFixedVReverse");
+            }
+        }
+
         public string TaxString => ToString();
 
         public Tax()

@@ -86,6 +86,14 @@
     <v:String x:Key="materials_remove_text">Выдаленне матэрыялу</v:String>
     <v:String x:Key="materials_price">Кошт:</v:String>
     <v:String x:Key="materials_count">Колькасць:</v:String>
+    <v:String x:Key="taxes_add">Дадаць новы падатак</v:String>
+    <v:String x:Key="taxes_update">Змяніць падатак</v:String>
+    <v:String x:Key="taxes_remove">Выдаліць падатак</v:String>
+    <v:String x:Key="taxes_remove_quest">Вы сапраўды жадаеце выдаліць падатак?</v:String>
+    <v:String x:Key="taxes_remove_text">Выдаленне падатку</v:String>
+    <v:String x:Key="taxes_isfixed_checkbox">Фіксаваны падатак</v:String>
+    <v:String x:Key="taxes_isfixed_text">Фіксаванасць:</v:String>
+    <v:String x:Key="taxes_percent">Працэнт:</v:String>
 
 </ResourceDictionary>
     
