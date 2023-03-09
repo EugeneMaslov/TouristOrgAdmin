@@ -94,5 +94,11 @@
     <v:String x:Key="taxes_isfixed_checkbox">Фиксированный налог</v:String>
     <v:String x:Key="taxes_isfixed_text">Фиксированность:</v:String>
     <v:String x:Key="taxes_percent">Процент:</v:String>
+    <v:String x:Key="fixed_sources_add">Добавить новое основное средство</v:String>
+    <v:String x:Key="fixed_sources_update">Изменить основное средство</v:String>
+    <v:String x:Key="fixed_sources_remove">Удалить основное средство</v:String>
+    <v:String x:Key="fixed_sources_remove_quest">Вы действительно желаете удалить основное средство?</v:String>
+    <v:String x:Key="fixed_sources_remove_text">Удаление основного средства</v:String>
+    <v:String x:Key="fixed_sources_inv_num">Инвентарный номер:</v:String>
 
 </ResourceDictionary>

@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:TouristOrgAdmin.Views.Accountant"
+             xmlns:local="clr-namespace:TouristOrgAdmin.Views.Accountant" xmlns:viewmodels="clr-namespace:TouristOrgAdmin.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:TouristOrganizationViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
@@ -27,7 +27,7 @@
             <StackPanel VerticalAlignment="Center">
                 <Button HorizontalAlignment="Stretch" Style="{StaticResource ModulesButton}" Content="{DynamicResource accountant_materials}" Command="{Binding ViewModel.GoMaterialsCommand}"></Button>
                 <Button HorizontalAlignment="Stretch" Style="{StaticResource ModulesButton}" Content="{DynamicResource accountant_taxes}" Command="{Binding ViewModel.GoTaxesCommand}"></Button>
-                <Button HorizontalAlignment="Stretch" Style="{StaticResource ModulesButton}" Content="{DynamicResource accountant_fixed_sources}" Command=""></Button>
+                <Button HorizontalAlignment="Stretch" Style="{StaticResource ModulesButton}" Content="{DynamicResource accountant_fixed_sources}" Command="{Binding ViewModel.GoFixedSourcesCommand}"></Button>
             </StackPanel>
         </Grid>
     </Grid>

@@ -94,6 +94,12 @@
     <v:String x:Key="taxes_isfixed_checkbox">Фіксаваны падатак</v:String>
     <v:String x:Key="taxes_isfixed_text">Фіксаванасць:</v:String>
     <v:String x:Key="taxes_percent">Працэнт:</v:String>
+    <v:String x:Key="fixed_sources_add">Дадаць новы асноўны сродак</v:String>
+    <v:String x:Key="fixed_sources_update">Змяніць асноўны сродак</v:String>
+    <v:String x:Key="fixed_sources_remove">Выдаліць асноўны сродак</v:String>
+    <v:String x:Key="fixed_sources_remove_quest">Вы сапраўды жадаеце выдаліць асноўны сродак?</v:String>
+    <v:String x:Key="fixed_sources_remove_text">Выдаленне асноўнага сродку</v:String>
+    <v:String x:Key="fixed_sources_inv_num">Інвентарны нумар:</v:String>
 
 </ResourceDictionary>
     

@@ -16,6 +16,7 @@ using TouristOrgAdmin.Views.Manager.Role;
 using TouristOrgAdmin.Views.Accountant;
 using TouristOrgAdmin.Views.Accountant.Materials;
 using TouristOrgAdmin.Views.Accountant.Taxes;
+using TouristOrgAdmin.Views.Accountant.FixedSources;
 
 namespace TouristOrgAdmin.ViewModels
 {
@@ -112,6 +113,13 @@ namespace TouristOrgAdmin.ViewModels
         public RelayCommand EndAddingTaxCommand { protected set; get; }
         public RelayCommand GoChangeTaxCommand { protected set; get; }
         public RelayCommand RemoveTaxCommand { protected set; get; }
+        public RelayCommand GoFixedSourcesCommand { protected set; get; }
+        public RelayCommand SelectFixedSourcesCommand { protected set; get; }
+        public RelayCommand GoAddingFixedSourceCommand { protected set; get; }
+        public RelayCommand CancelAddingFixedSourceCommand { protected set; get; }
+        public RelayCommand EndAddingFixedSourceCommand { protected set; get; }
+        public RelayCommand GoChangeFixedSourceCommand { protected set; get; }
+        public RelayCommand RemoveFixedSourceCommand { protected set; get; }
         public string TempString { get; set; }
         public string Like { get; set; } = "";
 
@@ -426,6 +434,13 @@ namespace TouristOrgAdmin.ViewModels
             EndAddingTaxCommand = new RelayCommand(_ => EndAddingTax());
             GoChangeTaxCommand = new RelayCommand(_ => GoChangeTax());
             RemoveTaxCommand = new RelayCommand(_ => RemoveTax());
+            GoFixedSourcesCommand = new RelayCommand(_ => GoFixedSources());
+            SelectFixedSourcesCommand = new RelayCommand(_ => SelectFixedSources());
+            GoAddingFixedSourceCommand = new RelayCommand(_ => GoAddingFixedSource());
+            CancelAddingFixedSourceCommand = new RelayCommand(_ => CancelAddingFixedSource());
+            EndAddingFixedSourceCommand = new RelayCommand(_ => EndAddingFixedSource());
+            GoChangeFixedSourceCommand = new RelayCommand(_ => GoChangeFixedSource());
+            RemoveFixedSourceCommand = new RelayCommand(_ => RemoveFixedSource());
             AdminAccount = AdminAccount.GetInstance();
             TempAdminAccount = new AdminAccount();
             Communications = new ObservableCollection<Communications>();
@@ -1312,6 +1327,116 @@ namespace TouristOrgAdmin.ViewModels
                     DB.SaveChanges();
                     SelectedTax = null;
                     SelectTaxes();
+                }
+            }
+        }
+        #endregion
+        #region FixedSources
+        private void GoFixedSources()
+        {
+            AccountantControl.StaticNavigate(FixedSourcesObserverControl.GetInstance(this), this);
+        }
+        public void SelectFixedSources()
+        {
+            if (Like != null)
+            {
+                if (FixedSources != null)
+                {
+                    FixedSources.Clear();
+                    while (FixedSources.Any())
+                    {
+                        FixedSources.RemoveAt(FixedSources.Count - 1);
+                    }
+                }
+
+                IEnumerable<FixedSource> fixedSources = null;
+
+                if (Like == "")
+                {
+                    fixedSources = DB.FixedSources.ToList();
+                }
+                else
+                {
+                    fixedSources = DB.FixedSources.Where(x => x.Name.Contains(Like) || x.InventoryNum.Contains(Like));
+                }
+
+                foreach (FixedSource item in fixedSources)
+                {
+                    if (!FixedSources.Contains(item))
+                    {
+                        FixedSources.Add(item);
+                    }
+                }
+            }
+        }
+
+        private void GoAddingFixedSource()
+        {
+            AccountantControl.StaticNavigate(FixedSourcesAddingControl.GetInstance(this), this);
+            TempFixedSource = new FixedSource();
+        }
+
+        private void CancelAddingFixedSource()
+        {
+            AccountantControl.StaticNavigate(FixedSourcesObserverControl.GetInstance(this), this);
+            TempFixedSource = null;
+            SelectFixedSources();
+        }
+
+        private void EndAddingFixedSource()
+        {
+            try
+            {
+                if (tempFixedSource != null && tempFixedSource.Name != "" && tempFixedSource.Name != null
+                    && tempFixedSource.InventoryNum != "" && tempFixedSource.InventoryNum != null)
+                {
+                    if (!DB.FixedSources.Where(x => x.FixID == tempFixedSource.FixID).Any())
+                    {
+                        tempFixedSource.FixID = 0;
+                        DB.FixedSources.Add(tempFixedSource);
+                    }
+                    else
+                    {
+                        SelectedFixedSource.Name = TempFixedSource.Name;
+                        SelectedFixedSource.InventoryNum = TempFixedSource.InventoryNum;
+                        SelectedFixedSource.Price = TempFixedSource.Price;
+                        DB.Entry(SelectedFixedSource).State = EntityState.Modified;
+                    }
+                    DB.SaveChanges();
+                    SelectedFixedSource = null;
+                    TempFixedSource = null;
+                    CancelAddingFixedSource();
+                }
+                else
+                {
+                    IsSettingsError = true;
+                }
+            }
+            catch (Exception)
+            {
+                IsSettingsError = true;
+            }
+        }
+
+        private void GoChangeFixedSource()
+        {
+            if (SelectedFixedSource != null)
+            {
+                TempFixedSource = SelectedFixedSource.Clone() as FixedSource;
+                AccountantControl.StaticNavigate(FixedSourcesAddingControl.GetInstance(this), this);
+            }
+        }
+
+        private void RemoveFixedSource()
+        {
+            if (SelectedFixedSource != null)
+            {
+                if (MessageBox.Show((string)Application.Current.Resources["fixed_sources_remove_quest"], (string)Application.Current.Resources["fixed_sources_remove_text"], MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                {
+                    DB.FixedSources.Remove(SelectedFixedSource);
+                    DB.SaveChanges();
+                    SelectedFixedSource = null;
+                    SelectFixedSources();
                 }
             }
         }
