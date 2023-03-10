@@ -1,0 +1,312 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="TouristOrgAdmin.Models.AdminAccount" Collapsed="true">
+    <Position X="7.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAgIAAEIAAAAAAABAAQAAACEAQUAggQEAA=</HashCode>
+      <FileName>Models\AdminAccount.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TouristOrgAdmin.Models.Communications" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAABCAwAAAgAAAAEABAAAAQQAACEAAAAAAAAhAAAABA=</HashCode>
+      <FileName>Models\Communications.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TouristOrgAdmin.Models.Employees" Collapsed="true">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAACAIEAAAAAIAENACAAAQIAAAAAQACAAAAAgBAABA=</HashCode>
+      <FileName>Models\Employees.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TouristOrgAdmin.Models.FixedSource" Collapsed="true">
+    <Position X="6" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAABQAAgAAEAAAAAARAAAAEAAAAAEAAAABAABA=</HashCode>
+      <FileName>Models\FixedSource.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TouristOrgAdmin.Models.Material" Collapsed="true">
+    <Position X="13.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQABAAAAAQAABAAEBAAAAAYEAAAAAAAAAAAAAAEAABA=</HashCode>
+      <FileName>Models\Material.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TouristOrgAdmin.Models.Roles" Collapsed="true">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAEIAAAACAAAEAAAAAAAACAAAAAAAAAAAEAAAABA=</HashCode>
+      <FileName>Models\Roles.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TouristOrgAdmin.Models.Statuses" Collapsed="true">
+    <Position X="9.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAABAAAAAQICAAACAAAAAAAAAAAABA=</HashCode>
+      <FileName>Models\Statuses.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TouristOrgAdmin.Models.Tax" Collapsed="true">
+    <Position X="11.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgABAAAAAQAAAQAEAAAAAIAAAAKAAQAIQAAACEAAABA=</HashCode>
+      <FileName>Models\Tax.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TouristOrgAdmin.ViewModels.TouristOrganizationViewModel" Collapsed="true">
+    <Position X="10.75" Y="5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>c/iVuLOOyGI2jw7mD2f/8+NRb5UioNbGTwTzs46TRL4=</HashCode>
+      <FileName>ViewModels\TouristOrganizationViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TouristOrgAdmin.Core.BaseViewModel" Collapsed="true">
+    <Position X="11.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAIAA=</HashCode>
+      <FileName>Core\BaseViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TouristOrgAdmin.Core.PasswordHelper" Collapsed="true">
+    <Position X="9.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAIQAgEBAEAAAAAAIAAABAAAAAAgAAAICA=</HashCode>
+      <FileName>Core\PasswordHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TouristOrgAdmin.Core.PropertyObject" Collapsed="true">
+    <Position X="11.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAAAAAAAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Core\PropertyObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TouristOrgAdmin.Core.RelayCommand" Collapsed="true">
+    <Position X="13.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACAAQAAEAEAABAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Core\RelayCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TouristOrgAdmin.Views.LoginControl" Collapsed="true">
+    <Position X="2.75" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAVAhAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\LoginControl.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TouristOrgAdmin.Views.OrganizationLinksControl" Collapsed="true">
+    <Position X="0.5" Y="9.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAVABAAAAAAAAQAAABAAA=</HashCode>
+      <FileName>Views\OrganizationLinksControl.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TouristOrgAdmin.Views.OrgLinksObserverControl" Collapsed="true">
+    <Position X="2.75" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAVABAAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>Views\OrgLinksObserverControl.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TouristOrgAdmin.Views.RegisterControl" Collapsed="true">
+    <Position X="4.75" Y="8.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAVAhAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\RegisterControl.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TouristOrgAdmin.Views.ResponsobilitiesAdd" Collapsed="true">
+    <Position X="4.75" Y="7" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAVAhAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\ResponsobilitiesAdd.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TouristOrgAdmin.Views.ChangePasswordControl" Collapsed="true">
+    <Position X="0.5" Y="7" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAVAhAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\ChangePasswordControl.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TouristOrgAdmin.Views.AdminPanel" Collapsed="true">
+    <Position X="2.75" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAVABAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\AdminPanel.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TouristOrgAdmin.Views.AddingCommunicationControl" Collapsed="true">
+    <Position X="0.5" Y="8.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAVABAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\AddingCommunicationControl.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TouristOrgAdmin.Views.Accountant.FixedSources.FixedSourcesAddingControl" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="5.25" Y="3.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAVABAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\Accountant\FixedSources\FixedSourcesAddingControl.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TouristOrgAdmin.Views.Accountant.FixedSources.FixedSourcesObserverControl" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="4.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAVABAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\Accountant\FixedSources\FixedSourcesObserverControl.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TouristOrgAdmin.Views.Accountant.Materials.MaterialsAddingControl" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="2.75" Y="4.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAVABAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\Accountant\Materials\MaterialsAddingControl.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TouristOrgAdmin.Views.Accountant.Materials.MaterialsObserverControl" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="5.25" Y="4.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAVABAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\Accountant\Materials\MaterialsObserverControl.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TouristOrgAdmin.Views.Accountant.Taxes.TaxesAddingControl" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="5.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAIAVABAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\Accountant\Taxes\TaxesAddingControl.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TouristOrgAdmin.Views.Accountant.Taxes.TaxesObserverControl" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="2.75" Y="5.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAVABAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\Accountant\Taxes\TaxesObserverControl.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TouristOrgAdmin.Views.Accountant.AccountantControl" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="3.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAVABAAAAAAAAQAAABAAA=</HashCode>
+      <FileName>Views\Accountant\AccountantControl.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TouristOrgAdmin.Views.Accountant.AccountantObserverControl" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="2.75" Y="3.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAVABAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\Accountant\AccountantObserverControl.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TouristOrgAdmin.Views.Manager.Role.RolesAddingControl" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7" Y="8.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAVABAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\Manager\Role\RolesAddingControl.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TouristOrgAdmin.Views.Manager.Role.RolesObserverControl" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.5" Y="8.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAVABAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\Manager\Role\RolesObserverControl.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TouristOrgAdmin.Views.Manager.Status.StatusAddingControl" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="11.75" Y="8.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAVABAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\Manager\Status\StatusAddingControl.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TouristOrgAdmin.Views.Manager.Status.StatusObserverControl" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7" Y="9.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAVABAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\Manager\Status\StatusObserverControl.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TouristOrgAdmin.Views.Manager.ManagerAddingControl" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7" Y="7" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAVABAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\Manager\ManagerAddingControl.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TouristOrgAdmin.Views.Manager.ManagerControl" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.5" Y="7" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAVABAAAAAAAAQAAABAAA=</HashCode>
+      <FileName>Views\Manager\ManagerControl.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TouristOrgAdmin.Views.Manager.ManagerObserverControl" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="11.75" Y="7" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAVABAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\Manager\ManagerObserverControl.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TouristOrgAdmin.MainWindow" Collapsed="true">
+    <Position X="8" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAEAAAAAAAAUIAAAVABAAAAhAAAQAAABgAA=</HashCode>
+      <FileName>MainWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TouristOrgAdmin.Controllers.TouristCompanyContext" Collapsed="true">
+    <Position X="7.5" Y="2" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AEAAACAAQQAAAAAEAAAAAAAACgAAAAAABAAAAgAAAAA=</HashCode>
+      <FileName>Controllers\TouristCompanyContext.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="TouristOrgAdmin.Core.ILanguages" Collapsed="true">
+    <Position X="13.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Core\BaseControl.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

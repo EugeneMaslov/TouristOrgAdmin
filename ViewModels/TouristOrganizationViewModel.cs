@@ -17,6 +17,7 @@ using TouristOrgAdmin.Views.Accountant;
 using TouristOrgAdmin.Views.Accountant.Materials;
 using TouristOrgAdmin.Views.Accountant.Taxes;
 using TouristOrgAdmin.Views.Accountant.FixedSources;
+using TouristOrgAdmin.Views.Info;
 
 namespace TouristOrgAdmin.ViewModels
 {
@@ -48,6 +49,7 @@ namespace TouristOrgAdmin.ViewModels
         private bool isTrue = true;
         private bool isFalse = true;
         private bool isFar = true;
+        private int maximumHeight = 350;
         #endregion
         #region Properties
         public ObservableCollection<Communications> Communications { get; set; }
@@ -120,6 +122,10 @@ namespace TouristOrgAdmin.ViewModels
         public RelayCommand EndAddingFixedSourceCommand { protected set; get; }
         public RelayCommand GoChangeFixedSourceCommand { protected set; get; }
         public RelayCommand RemoveFixedSourceCommand { protected set; get; }
+        public RelayCommand GoAccountInfoCommand { protected set; get; }
+        public RelayCommand GoOrgLinksInfoCommand { protected set; get; }
+        public RelayCommand GoManagerInfoCommand { protected set; get; }
+        public RelayCommand GoAccountantInfoCommand { protected set; get; }
         public string TempString { get; set; }
         public string Like { get; set; } = "";
 
@@ -375,6 +381,19 @@ namespace TouristOrgAdmin.ViewModels
                 OnPropertyChanged("ErrorText");
             }
         }
+
+        public int MaximumHeight
+        {
+            get => maximumHeight;
+            set
+            {
+                if (value > 0)
+                {
+                    maximumHeight = value;
+                    OnPropertyChanged("MaximumHeight");
+                }
+            }
+        }
         #endregion
         #region Init
         public TouristOrganizationViewModel()
@@ -441,6 +460,10 @@ namespace TouristOrgAdmin.ViewModels
             EndAddingFixedSourceCommand = new RelayCommand(_ => EndAddingFixedSource());
             GoChangeFixedSourceCommand = new RelayCommand(_ => GoChangeFixedSource());
             RemoveFixedSourceCommand = new RelayCommand(_ => RemoveFixedSource());
+            GoAccountInfoCommand = new RelayCommand(_ => GoAccountInfo());
+            GoOrgLinksInfoCommand = new RelayCommand(_ => GoOrgLinksInfo());
+            GoManagerInfoCommand = new RelayCommand(_ => GoManagerInfo());
+            GoAccountantInfoCommand = new RelayCommand(_ => GoAccountantInfo());
             AdminAccount = AdminAccount.GetInstance();
             TempAdminAccount = new AdminAccount();
             Communications = new ObservableCollection<Communications>();
@@ -1441,6 +1464,27 @@ namespace TouristOrgAdmin.ViewModels
             }
         }
         #endregion
+        #endregion
+        #region Info
+        private void GoAccountInfo()
+        {
+            MainWindow.StaticNavigate(AccountInfoControl.GetInstance(this), this);
+        }
+
+        private void GoOrgLinksInfo()
+        {
+            MainWindow.StaticNavigate(OrgLinksInfoControl.GetInstance(this), this);
+        }
+
+        private void GoManagerInfo()
+        {
+            MainWindow.StaticNavigate(ManagerInfoControl.GetInstance(this), this);
+        }
+
+        private void GoAccountantInfo()
+        {
+            MainWindow.StaticNavigate(AccountantInfoControl.GetInstance(this), this);
+        }
         #endregion
     }
 }

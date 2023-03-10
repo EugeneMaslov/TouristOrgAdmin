@@ -1,0 +1,66 @@
+﻿<UserControl x:Class="TouristOrgAdmin.Views.Info.ManagerInfoControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TouristOrgAdmin.Views.Info"
+             mc:Ignorable="d" 
+             d:DesignHeight="2000" d:DesignWidth="1000">
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush StartPoint="0, 0" EndPoint="1, 1">
+                <GradientStop Offset="0.3" Color="	#7FC7FF"></GradientStop>
+                <GradientStop Offset="0.6" Color="	#F8F4FF"></GradientStop>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Grid Grid.Column="0" Grid.Row="1" Margin="20">
+            <Grid.Background>
+                <LinearGradientBrush StartPoint="0, 0" EndPoint="1, 1">
+                    <GradientStop Offset="-0.2" Color="#2271B3"></GradientStop>
+                    <GradientStop Offset="1.2" Color="#252850"></GradientStop>
+                </LinearGradientBrush>
+            </Grid.Background>
+            <StackPanel Margin="5" Orientation="Vertical">
+                <TextBlock Style="{StaticResource MainText}" Text="{DynamicResource info_manager}"></TextBlock>
+                <ScrollViewer CanContentScroll="True" Height="{Binding ViewModel.MaximumHeight}">
+                    <StackPanel>
+                        <TextBlock Style="{StaticResource LoginText}" Margin="0, 0, 0, 5" Text="{DynamicResource info_emp_generic}" TextWrapping="Wrap" TextAlignment="Justify" HorizontalAlignment="Left"></TextBlock>
+                        <Image Source="/Images/info_com_1.png" Height="100" Margin="10"></Image>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="/Images/info_com_2.png" Height="350" Margin="10"></Image>
+                            <StackPanel Orientation="Vertical" Width="320" VerticalAlignment="Center">
+                                <TextBlock Style="{StaticResource LoginText}" HorizontalAlignment="Left" Margin="5" Text="{DynamicResource info_com_interface}" TextWrapping="Wrap"></TextBlock>
+                                <TextBlock Style="{StaticResource LoginText}" HorizontalAlignment="Left" Margin="5" Text="{DynamicResource info_com_emp}" TextWrapping="Wrap"></TextBlock>
+                                <TextBlock Style="{StaticResource LoginText}" HorizontalAlignment="Left" Margin="5" Text="{DynamicResource info_com_status}" TextWrapping="Wrap"></TextBlock>
+                            </StackPanel>
+                        </StackPanel>
+                        <TextBlock Style="{StaticResource LoginText}" HorizontalAlignment="Left" Margin="5" Text="{DynamicResource info_com_out}" TextWrapping="Wrap" TextAlignment="Left"></TextBlock>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="/Images/info_com_3.png" Height="350" Margin="10"></Image>
+                            <StackPanel Orientation="Vertical" Width="320" VerticalAlignment="Center">
+                                <TextBlock Style="{StaticResource LoginText}" HorizontalAlignment="Left" Margin="5" Text="{DynamicResource info_com_status_1}" TextWrapping="Wrap"></TextBlock>
+                                <TextBlock Style="{StaticResource LoginText}" HorizontalAlignment="Left" Margin="5" Text="{DynamicResource info_com_status_2}" TextWrapping="Wrap"></TextBlock>
+                            </StackPanel>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="/Images/info_com_4.png" Height="350" Margin="10"></Image>
+                            <StackPanel Orientation="Vertical" Width="320" VerticalAlignment="Center">
+                                <TextBlock Style="{StaticResource LoginText}" HorizontalAlignment="Left" Margin="5" Text="{DynamicResource info_com_role_1}" TextWrapping="Wrap"></TextBlock>
+                                <TextBlock Style="{StaticResource LoginText}" HorizontalAlignment="Left" Margin="5" Text="{DynamicResource info_com_role_2}" TextWrapping="Wrap"></TextBlock>
+                            </StackPanel>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="/Images/info_com_5.png" Height="350" Margin="10"></Image>
+                            <StackPanel Orientation="Vertical" Width="320" VerticalAlignment="Center">
+                                <TextBlock Style="{StaticResource LoginText}" HorizontalAlignment="Left" Margin="5" Text="{DynamicResource info_com_emp_1}" TextWrapping="Wrap"></TextBlock>
+                                <TextBlock Style="{StaticResource LoginText}" HorizontalAlignment="Left" Margin="5" Text="{DynamicResource info_com_emp_2}" TextWrapping="Wrap"></TextBlock>
+                                <TextBlock Style="{StaticResource LoginText}" HorizontalAlignment="Left" Margin="5" Text="{DynamicResource info_com_emp_3}" TextWrapping="Wrap"></TextBlock>
+                            </StackPanel>
+                        </StackPanel>
+                    </StackPanel>
+                </ScrollViewer>
+            </StackPanel>
+            <Button x:Name="EndButton" VerticalAlignment="Bottom" Style="{StaticResource ModulesButton}" Content="{DynamicResource back_text}" Command="{Binding ViewModel.BackCommand}"/>
+        </Grid>
+    </Grid>
+</UserControl>

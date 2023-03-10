@@ -153,10 +153,24 @@ namespace TouristOrgAdmin
             if (WindowState != WindowState.Maximized)
             {
                 WindowState = WindowState.Maximized;
+                try
+                {
+                    (ViewModel as TouristOrganizationViewModel).MaximumHeight = (int)(Height - Height * 0.3);
+                }
+                catch (Exception)
+                {
+                }
             }
             else
             {
                 WindowState = WindowState.Normal;
+                try
+                {
+                    (ViewModel as TouristOrganizationViewModel).MaximumHeight = 350;
+                }
+                catch (Exception)
+                {
+                }
             }
         }
 

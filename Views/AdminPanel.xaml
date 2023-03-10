@@ -74,6 +74,26 @@
             </Grid.Background>
             <StackPanel Margin="10" Orientation="Vertical" VerticalAlignment="Top">
                 <TextBlock Style="{StaticResource MainText}" Text="{DynamicResource faq_main_text}"></TextBlock>
+                <Button Style="{StaticResource ModulesButton}" MinWidth="160" Command="{Binding ViewModel.GoAccountInfoCommand}">
+                    <Button.Content>
+                        <TextBlock Text="{DynamicResource info_acc}" TextWrapping="Wrap"></TextBlock>
+                    </Button.Content>
+                </Button>
+                <Button Style="{StaticResource ModulesButton}" MinWidth="160" Command="{Binding ViewModel.GoOrgLinksInfoCommand}">
+                    <Button.Content>
+                        <TextBlock Text="{DynamicResource info_com}" TextAlignment="Center" TextWrapping="Wrap"></TextBlock>
+                    </Button.Content>
+                </Button>
+                <Button Style="{StaticResource ModulesButton}" MinWidth="160" Command="{Binding ViewModel.GoManagerInfoCommand}" Visibility="{Binding ViewModel.AdminAccount.IsManagerV}">
+                    <Button.Content>
+                        <TextBlock Text="{DynamicResource info_manager}" TextAlignment="Center" TextWrapping="Wrap"></TextBlock>
+                    </Button.Content>
+                </Button>
+                <Button Style="{StaticResource ModulesButton}" MinWidth="160" Command="{Binding ViewModel.GoAccountantInfoCommand}" Visibility="{Binding ViewModel.AdminAccount.IsAccountantV}">
+                    <Button.Content>
+                        <TextBlock Text="{DynamicResource info_accountant}" TextAlignment="Center" TextWrapping="Wrap"></TextBlock>
+                    </Button.Content>
+                </Button>
             </StackPanel>
 
         </Grid>

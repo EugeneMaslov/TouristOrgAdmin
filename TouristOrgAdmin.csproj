@@ -25,6 +25,21 @@
     <None Remove="Images\free-icon-search-interface-symbol-54481.png" />
     <None Remove="Images\free-icon-searching-3795241.png" />
     <None Remove="Images\Icon.png" />
+    <None Remove="Images\info_acc.png" />
+    <None Remove="Images\info_accountant_1.png" />
+    <None Remove="Images\info_accountant_2.png" />
+    <None Remove="Images\info_accountant_3.png" />
+    <None Remove="Images\info_accountant_4.png" />
+    <None Remove="Images\info_accountant_5.png" />
+    <None Remove="Images\info_com_1.png" />
+    <None Remove="Images\info_com_2.png" />
+    <None Remove="Images\info_com_3.png" />
+    <None Remove="Images\info_com_4.png" />
+    <None Remove="Images\info_com_5.png" />
+    <None Remove="Images\info_man_1.png" />
+    <None Remove="Images\info_man_2.png" />
+    <None Remove="Images\info_man_3.png" />
+    <None Remove="Images\info_man_4.png" />
     <None Remove="Images\manager-icon.png" />
   </ItemGroup>
 
@@ -59,6 +74,51 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\Icon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\info_acc.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\info_accountant_1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\info_accountant_2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\info_accountant_3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\info_accountant_4.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\info_accountant_5.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\info_com_1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\info_com_2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\info_com_3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\info_com_4.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\info_com_5.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\info_man_1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\info_man_2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\info_man_3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\info_man_4.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\manager-icon.png">

@@ -28,14 +28,14 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="20"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
-                <RowDefinition Height="30"></RowDefinition>
+                <RowDefinition Height="35"></RowDefinition>
             </Grid.RowDefinitions>
             <StackPanel Grid.Row="0" Orientation="Vertical" VerticalAlignment="Top" Background="#003366">
                 <TextBlock Style="{StaticResource MainText}" Text="{DynamicResource module_manager}" Margin="0" FontSize="14"></TextBlock>
             </StackPanel>
             <UserControl Grid.Row="1" Content="{Binding ViewModel.SubContentPath}"></UserControl>
             <StackPanel Orientation="Vertical" Grid.Row="2" HorizontalAlignment="Stretch">
-                <Button Style="{StaticResource UpperNoLoginButton}" Height="30" Margin="0" Content="{DynamicResource back_text}" HorizontalAlignment="Stretch" FontSize="10" Command="{Binding ViewModel.BackCommand}"></Button>
+                <Button Style="{StaticResource UpperNoLoginButton}"  Margin="0" Content="{DynamicResource back_text}" HorizontalAlignment="Stretch" FontSize="18" Command="{Binding ViewModel.BackCommand}"></Button>
             </StackPanel>
         </Grid>
     </Grid>
